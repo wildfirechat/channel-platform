@@ -3,8 +3,8 @@ package com.github.niefy.modules.wx.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.github.niefy.modules.wx.port.WxMpDefaultConfigImpl;
 import lombok.Data;
-import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -31,6 +31,9 @@ public class WxAccount implements Serializable {
 	 */
 	@NotEmpty(message = "名称不得为空")
 	private String name;
+
+	@NotEmpty(message = "IM服务地址不得为空")
+	private String imurl;
 	/**
 	 * 账号类型
 	 */

@@ -1,7 +1,6 @@
 package com.github.niefy.modules.wx.service;
 
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.bean.material.*;
+import com.github.niefy.modules.wx.port.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

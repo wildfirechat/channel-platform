@@ -1,5 +1,7 @@
 package com.github.niefy.modules.wx.service.impl;
 
+import cn.wildfirechat.pojos.ArticleContent;
+import cn.wildfirechat.sdk.ChannelServiceApi;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,6 +14,7 @@ import com.github.niefy.common.exception.RRException;
 import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.common.utils.Query;
 import com.github.niefy.modules.wx.dao.ArticleMapper;
+import com.github.niefy.modules.wx.service.WxAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -33,6 +36,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     private static final String LIST_FILEDS = "id,summary,image,sub_category,update_time,title,type,tags,create_time,target_link,open_count,category";
     @Autowired
     ArticleMapper articleMapper;
+
+    @Autowired
+    WxAccountService wxAccountService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -102,6 +108,22 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             articleMapper.updateById(article);
         }
         return true;
+    }
+
+    @Override
+    public boolean sendArticle(String appid, long articleId) {
+        Article article = articleMapper.selectById(articleId);
+        if (article != null) {
+            ChannelServiceApi api = wxAccountService.getApi(appid);
+            ArticleContent content = new ArticleContent(articleId+"", article.getImage(), article.getTitle(), article.getTargetLink(), true);
+            try {
+                api.sendMessage(0, null, content.toPayload());
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
     /**

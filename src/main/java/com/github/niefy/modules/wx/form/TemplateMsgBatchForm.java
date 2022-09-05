@@ -1,9 +1,9 @@
 package com.github.niefy.modules.wx.form;
 
 import com.github.niefy.common.utils.Json;
+import com.github.niefy.modules.wx.port.WxMpTemplateData;
+import com.github.niefy.modules.wx.port.WxMpTemplateMessage;
 import lombok.Data;
-import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
-import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

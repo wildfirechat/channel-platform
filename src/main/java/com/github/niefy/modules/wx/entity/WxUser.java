@@ -1,5 +1,6 @@
 package com.github.niefy.modules.wx.entity;
 
+import cn.wildfirechat.pojos.InputOutputUserInfo;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
@@ -7,9 +8,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.github.niefy.common.utils.Json;
+import com.github.niefy.modules.wx.port.WxMpUser;
+import com.github.niefy.modules.wx.port.WxOAuth2UserInfo;
 import lombok.Data;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
-import me.chanjar.weixin.mp.bean.result.WxMpUser;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
@@ -50,7 +51,15 @@ public class WxUser implements Serializable {
         this.openid = openid;
     }
 
-    public WxUser(WxMpUser wxMpUser,String appid) {
+    public WxUser(String appId, InputOutputUserInfo userInfo) {
+        this.appid = appId;
+        this.openid = userInfo.getUserId();
+        this.subscribe = true;
+        this.nickname = userInfo.getDisplayName();
+        this.headimgurl = userInfo.getPortrait();
+    }
+
+    public WxUser(WxMpUser wxMpUser, String appid) {
         this.openid = wxMpUser.getOpenId();
         this.appid = appid;
         this.subscribe=wxMpUser.getSubscribe();

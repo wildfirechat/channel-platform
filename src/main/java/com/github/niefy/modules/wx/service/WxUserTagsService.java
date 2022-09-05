@@ -1,7 +1,7 @@
 package com.github.niefy.modules.wx.service;
 
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.bean.tag.WxUserTag;
+import com.github.niefy.modules.wx.port.WxErrorException;
+import com.github.niefy.modules.wx.port.WxUserTag;
 
 import java.util.List;
 

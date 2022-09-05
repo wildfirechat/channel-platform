@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.niefy.common.utils.Json;
+import com.github.niefy.modules.wx.port.WxMpTemplate;
 import lombok.Data;
-import me.chanjar.weixin.mp.bean.template.WxMpTemplate;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -39,7 +39,7 @@ public class MsgTemplate implements Serializable {
     public MsgTemplate() {
 
     }
-    public MsgTemplate(WxMpTemplate mpTemplate,String appid) {
+    public MsgTemplate(WxMpTemplate mpTemplate, String appid) {
         this.appid = appid;
         this.templateId=mpTemplate.getTemplateId();
         this.title=mpTemplate.getTitle();

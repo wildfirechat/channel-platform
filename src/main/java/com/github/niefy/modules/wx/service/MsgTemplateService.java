@@ -3,7 +3,7 @@ package com.github.niefy.modules.wx.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.niefy.modules.wx.entity.MsgTemplate;
 
-import me.chanjar.weixin.common.error.WxErrorException;
+import com.github.niefy.modules.wx.port.WxErrorException;
 
 import com.github.niefy.common.utils.PageUtils;
 

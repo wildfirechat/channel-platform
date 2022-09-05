@@ -33,6 +33,13 @@ public interface ArticleService extends IService<Article> {
     boolean saveArticle(Article article);
 
     /**
+     * 发送文章
+     * @param articleId
+     * @return
+     */
+    boolean sendArticle(String appid, long articleId);
+
+    /**
      * 按条件分页查询
      *
      * @param title

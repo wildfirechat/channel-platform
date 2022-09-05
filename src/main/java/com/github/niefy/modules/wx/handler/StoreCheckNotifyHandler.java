@@ -2,12 +2,13 @@ package com.github.niefy.modules.wx.handler;
 
 import java.util.Map;
 
+import com.github.niefy.modules.wx.port.WxMpService;
+import com.github.niefy.modules.wx.port.WxMpXmlMessage;
+import com.github.niefy.modules.wx.port.WxMpXmlOutMessage;
+import com.github.niefy.modules.wx.port.WxSessionManager;
 import org.springframework.stereotype.Component;
 
-import me.chanjar.weixin.common.session.WxSessionManager;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
-import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
+
 
 /**
  * 门店审核事件处理

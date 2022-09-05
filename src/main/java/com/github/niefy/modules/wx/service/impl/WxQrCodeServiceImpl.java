@@ -3,11 +3,11 @@ package com.github.niefy.modules.wx.service.impl;
 import com.github.niefy.modules.wx.dao.WxQrCodeMapper;
 import com.github.niefy.modules.wx.entity.WxQrCode;
 import com.github.niefy.modules.wx.form.WxQrCodeForm;
+import com.github.niefy.modules.wx.port.WxErrorException;
+import com.github.niefy.modules.wx.port.WxMpQrCodeTicket;
+import com.github.niefy.modules.wx.port.WxMpService;
 import com.github.niefy.modules.wx.service.WxQrCodeService;
 import lombok.RequiredArgsConstructor;
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.bean.result.WxMpQrCodeTicket;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -50,12 +50,12 @@ public class WxQrCodeServiceImpl extends ServiceImpl<WxQrCodeMapper, WxQrCode> i
      */
     @Override
     public WxMpQrCodeTicket createQrCode(String appid, WxQrCodeForm form) throws WxErrorException {
-        WxMpQrCodeTicket ticket;
-        if (form.getIsTemp()) {//创建临时二维码
-            ticket = wxService.getQrcodeService().qrCodeCreateTmpTicket(form.getSceneStr(), form.getExpireSeconds());
-        } else {//创建永久二维码
-            ticket = wxService.getQrcodeService().qrCodeCreateLastTicket(form.getSceneStr());
-        }
+        WxMpQrCodeTicket ticket = null;
+//        if (form.getIsTemp()) {//创建临时二维码
+//            ticket = wxService.getQrcodeService().qrCodeCreateTmpTicket(form.getSceneStr(), form.getExpireSeconds());
+//        } else {//创建永久二维码
+//            ticket = wxService.getQrcodeService().qrCodeCreateLastTicket(form.getSceneStr());
+//        }
         WxQrCode wxQrCode = new WxQrCode(form,appid);
         wxQrCode.setTicket(ticket.getTicket());
         wxQrCode.setUrl(ticket.getUrl());

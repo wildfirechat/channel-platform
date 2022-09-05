@@ -2,11 +2,10 @@ package com.github.niefy.modules.wx.manage;
 
 import com.github.niefy.common.utils.R;
 import com.github.niefy.modules.wx.form.MaterialFileDeleteForm;
+import com.github.niefy.modules.wx.port.*;
 import com.github.niefy.modules.wx.service.WxAssetsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.bean.material.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +39,7 @@ public class WxAssetsManageController {
     @ApiOperation(value = "文件素材总数")
     public R materialCount(@CookieValue String appid) throws WxErrorException {
         WxMpMaterialCountResult res = wxAssetsService.materialCount(appid);
+        res = new WxMpMaterialCountResult();
         return R.ok().put(res);
     }
 
@@ -71,6 +71,7 @@ public class WxAssetsManageController {
     public R materialFileBatchGet(@CookieValue String appid,@RequestParam(defaultValue = "image") String type,
                                   @RequestParam(defaultValue = "1") int page) throws WxErrorException {
         WxMpMaterialFileBatchGetResult res = wxAssetsService.materialFileBatchGet(appid,type,page);
+        res = new WxMpMaterialFileBatchGetResult();
         return R.ok().put(res);
     }
 

@@ -1,0 +1,4 @@
+package com.github.niefy.modules.wx.port;
+
+public class WxMpServiceImpl extends WxMpService {
+}

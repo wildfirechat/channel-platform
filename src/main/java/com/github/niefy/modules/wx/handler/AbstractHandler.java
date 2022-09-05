@@ -1,6 +1,5 @@
 package com.github.niefy.modules.wx.handler;
 
-import me.chanjar.weixin.mp.api.WxMpMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

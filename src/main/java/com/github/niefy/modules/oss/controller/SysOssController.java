@@ -8,6 +8,7 @@ import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.common.utils.R;
 import com.github.niefy.common.validator.ValidatorUtils;
 import com.github.niefy.common.validator.group.AliyunGroup;
+import com.github.niefy.common.validator.group.MinioGroup;
 import com.github.niefy.common.validator.group.QcloudGroup;
 import com.github.niefy.common.validator.group.QiniuGroup;
 import com.github.niefy.modules.oss.cloud.CloudStorageConfig;
@@ -87,6 +88,9 @@ public class SysOssController {
         } else if (config.getType() == Constant.CloudService.QCLOUD.getValue()) {
             //校验腾讯云数据
             ValidatorUtils.validateEntity(config, QcloudGroup.class);
+        } else if (config.getType() == Constant.CloudService.MINIO.getValue()) {
+            //校验Minio数据
+            ValidatorUtils.validateEntity(config, MinioGroup.class);
         }
 
         sysConfigService.updateValueByKey(KEY, JSON.toJSONString(config));

@@ -1,5 +1,6 @@
 package com.github.niefy.modules.wx.service.impl;
 
+import cn.wildfirechat.sdk.ChannelServiceApi;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -8,10 +9,9 @@ import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.common.utils.Query;
 import com.github.niefy.modules.wx.dao.WxAccountMapper;
 import com.github.niefy.modules.wx.entity.WxAccount;
+import com.github.niefy.modules.wx.port.WxMpDefaultConfigImpl;
+import com.github.niefy.modules.wx.port.WxMpService;
 import com.github.niefy.modules.wx.service.WxAccountService;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.config.WxMpConfigStorage;
-import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +45,16 @@ public class WxAccountServiceImpl extends ServiceImpl<WxAccountMapper, WxAccount
         return new PageUtils(page);
     }
 
+    @Override
+    public ChannelServiceApi getApi(String appid) {
+        WxAccount account = getById(appid);
+        if(account != null) {
+            ChannelServiceApi api = new ChannelServiceApi(account.getImurl(), account.getAppid(), account.getSecret());
+            return api;
+        }
+        return null;
+    }
+
     @PostConstruct
     public void loadWxMpConfigStorages(){
         logger.info("加载公众号配置...");
@@ -64,17 +74,13 @@ public class WxAccountServiceImpl extends ServiceImpl<WxAccountMapper, WxAccount
         String appid = entity.getAppid();
         if(this.isAccountInRuntime(appid)){ //已有此appid信息，更新
             logger.info("更新公众号配置");
-            wxMpService.removeConfigStorage(appid);
             this.addAccountToRuntime(entity);
-
             return SqlHelper.retBool(this.baseMapper.updateById(entity));
         }else {//已有此appid信息，新增
             logger.info("新增公众号配置");
             this.addAccountToRuntime(entity);
-
             return SqlHelper.retBool(this.baseMapper.insert(entity));
         }
-
     }
 
     @Override
@@ -83,7 +89,7 @@ public class WxAccountServiceImpl extends ServiceImpl<WxAccountMapper, WxAccount
 
         // 更新wxMpService配置
         logger.info("同步移除公众号配置");
-        idList.forEach(id-> wxMpService.removeConfigStorage((String) id));
+//        idList.forEach(id-> wxMpService.removeConfigStorage((String) id));
 
         return SqlHelper.retBool(this.baseMapper.deleteBatchIds(idList));
     }
@@ -95,7 +101,7 @@ public class WxAccountServiceImpl extends ServiceImpl<WxAccountMapper, WxAccount
      */
     private boolean isAccountInRuntime(String appid){
         try {
-            return wxMpService.switchover(appid);
+            return this.baseMapper.selectById(appid) != null;
         }catch (NullPointerException e){// sdk bug，未添加任何账号时configStorageMap为null会出错
             return false;
         }
@@ -106,15 +112,15 @@ public class WxAccountServiceImpl extends ServiceImpl<WxAccountMapper, WxAccount
      */
     private synchronized void addAccountToRuntime(WxAccount entity){
         String appid = entity.getAppid();
-        WxMpDefaultConfigImpl config = entity.toWxMpConfigStorage();
-        try {
-            wxMpService.addConfigStorage(appid,config);
-        }catch (NullPointerException e){
-            logger.info("需初始化configStorageMap...");
-            Map<String, WxMpConfigStorage> configStorages = new HashMap<>(4);
-            configStorages.put(appid,config);
-            wxMpService.setMultiConfigStorages(configStorages,appid);
-        }
+//        WxMpDefaultConfigImpl config = entity.toWxMpConfigStorage();
+//        try {
+//            wxMpService.addConfigStorage(appid,config);
+//        }catch (NullPointerException e){
+//            logger.info("需初始化configStorageMap...");
+//            Map<String, WxMpConfigStorage> configStorages = new HashMap<>(4);
+//            configStorages.put(appid,config);
+//            wxMpService.setMultiConfigStorages(configStorages,appid);
+//        }
     }
 
 

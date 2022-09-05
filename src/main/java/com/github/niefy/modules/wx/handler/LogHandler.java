@@ -5,14 +5,15 @@ import java.util.Map;
 import com.github.niefy.common.utils.Json;
 
 import com.github.niefy.modules.wx.entity.WxMsg;
+import com.github.niefy.modules.wx.port.WxMpService;
+import com.github.niefy.modules.wx.port.WxMpXmlMessage;
+import com.github.niefy.modules.wx.port.WxMpXmlOutMessage;
+import com.github.niefy.modules.wx.port.WxSessionManager;
 import com.github.niefy.modules.wx.service.WxMsgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import me.chanjar.weixin.common.session.WxSessionManager;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
-import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
+
 
 /**
  * @author Binary Wang

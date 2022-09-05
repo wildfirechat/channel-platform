@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.modules.wx.entity.WxQrCode;
 import com.github.niefy.modules.wx.form.WxQrCodeForm;
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.bean.result.WxMpQrCodeTicket;
+import com.github.niefy.modules.wx.port.WxErrorException;
+import com.github.niefy.modules.wx.port.WxMpQrCodeTicket;
 
 import java.util.Map;
 

@@ -97,11 +97,11 @@ CREATE TABLE `sys_menu`  (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', NULL, NULL, 0, 'el-icon-s-tools', 0);
+INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', NULL, NULL, 0, 'el-icon-s-tools', 5);
 INSERT INTO `sys_menu` VALUES (2, 1, '管理员列表', 'sys/user', NULL, 1, 'admin', 1);
 INSERT INTO `sys_menu` VALUES (3, 1, '角色管理', 'sys/role', NULL, 1, 'role', 2);
 INSERT INTO `sys_menu` VALUES (4, 1, '菜单管理', 'sys/menu', NULL, 1, 'menu', 3);
-INSERT INTO `sys_menu` VALUES (6, 0, '微信管理', NULL, NULL, 0, 'el-icon-s-promotion', 1);
+INSERT INTO `sys_menu` VALUES (6, 0, '频道管理', NULL, NULL, 0, 'el-icon-s-promotion', 1);
 INSERT INTO `sys_menu` VALUES (7, 0, '内容管理', '', '', 0, 'el-icon-document-copy', 2);
 INSERT INTO `sys_menu` VALUES (9, 0, '日志报表', '', '', 0, 'el-icon-s-order', 4);
 INSERT INTO `sys_menu` VALUES (15, 2, '查看', NULL, 'sys:user:list,sys:user:info', 2, NULL, 0);
@@ -249,6 +249,7 @@ CREATE TABLE `sys_user_token`  (
 DROP TABLE IF EXISTS `wx_account`;
 CREATE TABLE `wx_account`  (
   `appid` char(20) CHARACTER SET utf8 NOT NULL COMMENT 'appid',
+  `imurl` varchar(1024) CHARACTER SET utf8 NOT NULL COMMENT 'imurl',
   `name` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '公众号名称',
   `type` tinyint(1) UNSIGNED NULL DEFAULT 1 COMMENT '账号类型',
   `verified` tinyint(1) UNSIGNED NULL DEFAULT 1 COMMENT '认证状态',
@@ -300,7 +301,8 @@ CREATE TABLE `wx_msg_reply_rule`  (
 -- ----------------------------
 -- Records of wx_msg_reply_rule
 -- ----------------------------
-INSERT INTO `wx_msg_reply_rule` VALUES (1, '', '关注公众号', 'subscribe', 0, 'text', '你好，欢迎关注！\n<a href=\"https://github.com/niefy\">点击链接查看我的主页</a>', 1, '关注回复', '00:00:00', '23:59:59', 0, '2020-05-20 15:15:00');
+INSERT INTO `wx_msg_reply_rule` VALUES (1, '', '关注公众号', 'subscribe', 0, 'text', '你好，欢迎关注！', 1, '关注回复', '00:00:00', '23:59:59', 0, '2020-05-20 15:15:00');
+INSERT INTO `wx_msg_reply_rule` VALUES (2, '', '默认回复', 'default_reply', 1, 'text', '您好，感谢您对我们的关注和支持！如果您有问题，请仔细阅读我们的文档（http://docs.wildfirechat.cn)，或者在github上给我们提Issue（https://github.com/wildfirechat），或者在论坛（http://docs.wildfirechat.cn）发帖提问。如果有商务问题，请加我们微信好友（微信ID：wildfirechat 或 wfchat）', 1, '没有匹配到回复时的默认回复', '00:00:00', '23:59:59', 0, '2020-05-20 15:15:00');
 
 -- ----------------------------
 -- Table structure for wx_msg_template

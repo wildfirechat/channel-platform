@@ -6,7 +6,6 @@ import com.github.niefy.modules.wx.service.WxUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import me.chanjar.weixin.mp.api.WxMpService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +25,11 @@ public class WxUserController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     WxUserService wxUserService;
-    private final WxMpService wxMpService;
+//    private final WxMpService wxMpService;
 
     @GetMapping("/getUserInfo")
     @ApiOperation(value = "获取粉丝信息")
     public R getUserInfo(@CookieValue String appid,@CookieValue String openid){
-        this.wxMpService.switchoverTo(appid);
         WxUser wxUser = wxUserService.getById(openid);
         return R.ok().put(wxUser);
     }

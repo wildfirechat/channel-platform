@@ -7,8 +7,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.github.niefy.common.utils.Json;
+import com.github.niefy.modules.wx.port.WxMpTemplateMessage;
 import lombok.Data;
-import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -37,7 +37,7 @@ public class TemplateMsgLog implements Serializable {
     public TemplateMsgLog() {
     }
 
-    public TemplateMsgLog(WxMpTemplateMessage msg,String appid, String sendResult) {
+    public TemplateMsgLog(WxMpTemplateMessage msg, String appid, String sendResult) {
         this.appid = appid;
         this.touser = msg.getToUser();
         this.templateId = msg.getTemplateId();

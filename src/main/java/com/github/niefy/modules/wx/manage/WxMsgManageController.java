@@ -65,7 +65,7 @@ public class WxMsgManageController {
     @ApiOperation(value = "回复")
     public R reply(@CookieValue String appid,@RequestBody WxMsgReplyForm form){
 
-        msgReplyService.reply(form.getOpenid(),form.getReplyType(),form.getReplyContent());
+        msgReplyService.reply(appid, form.getOpenid(),form.getReplyType(),form.getReplyContent());
         return R.ok();
     }
 

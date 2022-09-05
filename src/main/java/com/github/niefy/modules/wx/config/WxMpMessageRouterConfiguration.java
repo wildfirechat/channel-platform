@@ -1,16 +1,15 @@
 package com.github.niefy.modules.wx.config;
 
 import com.github.niefy.modules.wx.handler.*;
+import com.github.niefy.modules.wx.port.WxConsts;
+import com.github.niefy.modules.wx.port.WxMpMessageRouter;
+import com.github.niefy.modules.wx.port.WxMpService;
 import lombok.RequiredArgsConstructor;
-import me.chanjar.weixin.mp.api.WxMpMessageRouter;
-import me.chanjar.weixin.mp.api.WxMpService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static me.chanjar.weixin.common.api.WxConsts.EventType;
-import static me.chanjar.weixin.common.api.WxConsts.EventType.*;
-import static me.chanjar.weixin.common.api.WxConsts.XmlMsgType.EVENT;
-import static me.chanjar.weixin.mp.constant.WxMpEventConstants.CustomerService.KF_CREATE_SESSION;
+import static com.github.niefy.modules.wx.port.WxConsts.EventType.*;
+import static com.github.niefy.modules.wx.port.WxConsts.XmlMsgType.EVENT;
 
 @RequiredArgsConstructor
 @Configuration
@@ -23,6 +22,7 @@ public class WxMpMessageRouterConfiguration {
     private final ScanHandler scanHandler;
     private final UnsubscribeHandler unsubscribeHandler;
     private final SubscribeHandler subscribeHandler;
+    public static final String KF_CREATE_SESSION = "kf_create_session";
 
     @Bean
     public WxMpMessageRouter messageRouter(WxMpService wxMpService) {
@@ -34,7 +34,7 @@ public class WxMpMessageRouterConfiguration {
         // 接收客服会话管理事件
         newRouter.rule().async(false).msgType(EVENT).event(KF_CREATE_SESSION).handler(this.kfSessionHandler).end();
         // 自定义菜单事件
-        newRouter.rule().async(false).msgType(EVENT).event(EventType.CLICK).handler(this.menuHandler).end();
+        newRouter.rule().async(false).msgType(EVENT).event(WxConsts.EventType.CLICK).handler(this.menuHandler).end();
         // 关注事件
         newRouter.rule().async(false).msgType(EVENT).event(SUBSCRIBE).handler(this.subscribeHandler).end();
         // 取消关注事件

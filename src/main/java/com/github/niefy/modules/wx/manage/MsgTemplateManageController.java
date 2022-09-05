@@ -6,14 +6,12 @@ import java.util.Map;
 import com.github.niefy.modules.wx.entity.MsgTemplate;
 import com.github.niefy.modules.wx.form.TemplateMsgBatchForm;
 
+import com.github.niefy.modules.wx.port.WxErrorException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import me.chanjar.weixin.mp.api.WxMpService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import me.chanjar.weixin.common.error.WxErrorException;
 
 import com.github.niefy.modules.wx.service.MsgTemplateService;
 import com.github.niefy.modules.wx.service.TemplateMsgService;
@@ -36,8 +34,6 @@ public class MsgTemplateManageController {
     private MsgTemplateService msgTemplateService;
     @Autowired
     private TemplateMsgService templateMsgService;
-    @Autowired
-    private WxMpService wxMpService;
 
     /**
      * 列表
@@ -119,7 +115,6 @@ public class MsgTemplateManageController {
     @RequiresPermissions("wx:msgtemplate:save")
     @ApiOperation(value = "同步公众号模板")
     public R syncWxTemplate(@CookieValue String appid) throws WxErrorException {
-        this.wxMpService.switchoverTo(appid);
         msgTemplateService.syncWxTemplate(appid);
         return R.ok();
     }
@@ -132,7 +127,6 @@ public class MsgTemplateManageController {
     @RequiresPermissions("wx:msgtemplate:save")
     @ApiOperation(value = "批量向用户发送模板消息",notes = "将消息发送给数据库中所有符合筛选条件的用户")
     public R sendMsgBatch(@CookieValue String appid,@RequestBody TemplateMsgBatchForm form) {
-        this.wxMpService.switchoverTo(appid);
         templateMsgService.sendMsgBatch(form, appid);
         return R.ok();
     }

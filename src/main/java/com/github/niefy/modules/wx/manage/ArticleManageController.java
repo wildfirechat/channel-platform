@@ -62,7 +62,29 @@ public class ArticleManageController {
     @ApiOperation(value = "保存")
     public R save(@RequestBody Article article) {
         articleService.saveArticle(article);
+        return R.ok();
+    }
 
+    /**
+     * 保存并发送
+     */
+    @PostMapping("/save_and_send/{appid}")
+    @RequiresPermissions("wx:article:save")
+    @ApiOperation(value = "保存并发送")
+    public R saveAndSend(@RequestBody Article article, @PathVariable("appid") String appid) {
+        articleService.saveArticle(article);
+        articleService.sendArticle(appid, article.getId());
+        return R.ok();
+    }
+
+    /**
+     * 发送
+     */
+    @PostMapping("/send/{articleid}/{appid}")
+    @RequiresPermissions("wx:article:save")
+    @ApiOperation(value = "发送")
+    public R saveAndSend(@PathVariable("articleid") Long articleid, @PathVariable("appid") String appid) {
+        articleService.sendArticle(appid, articleid);
         return R.ok();
     }
 

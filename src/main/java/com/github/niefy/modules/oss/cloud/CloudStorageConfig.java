@@ -2,6 +2,7 @@ package com.github.niefy.modules.oss.cloud;
 
 
 import com.github.niefy.common.validator.group.AliyunGroup;
+import com.github.niefy.common.validator.group.MinioGroup;
 import com.github.niefy.common.validator.group.QcloudGroup;
 import com.github.niefy.common.validator.group.QiniuGroup;
 import lombok.Data;
@@ -20,8 +21,8 @@ import java.io.Serializable;
 public class CloudStorageConfig implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    //类型 1：七牛  2：阿里云  3：腾讯云
-    @Range(min = 1, max = 3, message = "类型错误")
+    //类型 1：七牛  2：阿里云  3：腾讯云 4：Minio
+    @Range(min = 1, max = 4, message = "类型错误")
     private Integer type;
 
     //七牛绑定的域名
@@ -80,6 +81,25 @@ public class CloudStorageConfig implements Serializable {
     //腾讯云COS所属地区
     @NotBlank(message = "所属地区不能为空", groups = QcloudGroup.class)
     private String qcloudRegion;
+
+    //Minio 绑定的域名
+    @NotBlank(message = "Minio 绑定的域名不能为空", groups = AliyunGroup.class)
+    @URL(message = "Minio 绑定的域名格式不正确", groups = AliyunGroup.class)
+    private String minioDomain;
+    //Minio 路径前缀
+    private String minioPrefix;
+    //Minio EndPoint
+    @NotBlank(message = "Minio EndPoint不能为空", groups = AliyunGroup.class)
+    private String minioEndPoint;
+    //Minio AccessKeyId
+    @NotBlank(message = "Minio AccessKeyId不能为空", groups = AliyunGroup.class)
+    private String minioAccessKeyId;
+    //Minio AccessKeySecret
+    @NotBlank(message = "Minio AccessKeySecret不能为空", groups = AliyunGroup.class)
+    private String minioAccessKeySecret;
+    //Minio BucketName
+    @NotBlank(message = "Minio BucketName不能为空", groups = AliyunGroup.class)
+    private String minioBucketName;
 
 
 }

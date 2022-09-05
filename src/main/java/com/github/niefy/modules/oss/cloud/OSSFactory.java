@@ -27,6 +27,8 @@ public final class OSSFactory {
             return new AliyunAbstractCloudStorageService(config);
         } else if (config.getType() == Constant.CloudService.QCLOUD.getValue()) {
             return new QcloudAbstractCloudStorageService(config);
+        } else if(config.getType() == Constant.CloudService.MINIO.getValue()) {
+            return new MinioAbstractCloudStorageService(config);
         }
 
         return null;

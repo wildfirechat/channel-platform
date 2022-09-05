@@ -1,13 +1,13 @@
 package com.github.niefy.modules.wx.service;
 
 import com.github.niefy.modules.wx.form.TemplateMsgBatchForm;
-import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
+import com.github.niefy.modules.wx.port.WxMpTemplateMessage;
 
 public interface TemplateMsgService {
     /**
      * 发送微信模版消息
      */
-    void sendTemplateMsg(WxMpTemplateMessage msg,String appid);
+    void sendTemplateMsg(WxMpTemplateMessage msg, String appid);
 
     /**
      * 批量消息发送

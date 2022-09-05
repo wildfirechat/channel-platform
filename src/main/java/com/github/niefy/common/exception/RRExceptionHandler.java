@@ -1,7 +1,6 @@
 package com.github.niefy.common.exception;
 
 import com.github.niefy.common.utils.R;
-import me.chanjar.weixin.common.error.WxErrorException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,11 +47,11 @@ public class RRExceptionHandler {
         return R.error("没有权限，请联系管理员授权");
     }
 
-    @ExceptionHandler({WxErrorException.class})
-    public R handleWxErrorException(WxErrorException e) {
-        logger.error(e.getMessage(), e);
-        return R.error("微信公众平台接口错误:" + e.getError().getErrorMsg());
-    }
+//    @ExceptionHandler({WxErrorException.class})
+//    public R handleWxErrorException(WxErrorException e) {
+//        logger.error(e.getMessage(), e);
+//        return R.error("微信公众平台接口错误:" + e.getError().getErrorMsg());
+//    }
 
     @ExceptionHandler(Exception.class)
     public R handleException(Exception e) {

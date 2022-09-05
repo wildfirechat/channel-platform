@@ -5,14 +5,13 @@ import com.github.niefy.config.TaskExcutor;
 import com.github.niefy.modules.wx.entity.TemplateMsgLog;
 import com.github.niefy.modules.wx.entity.WxUser;
 import com.github.niefy.modules.wx.form.TemplateMsgBatchForm;
+import com.github.niefy.modules.wx.port.WxMpService;
+import com.github.niefy.modules.wx.port.WxMpTemplateMessage;
 import com.github.niefy.modules.wx.service.MsgTemplateService;
 import com.github.niefy.modules.wx.service.TemplateMsgLogService;
 import com.github.niefy.modules.wx.service.TemplateMsgService;
 import com.github.niefy.modules.wx.service.WxUserService;
 import lombok.RequiredArgsConstructor;
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,15 +42,15 @@ public class TemplateMsgServiceImpl implements TemplateMsgService {
      */
     @Override
     @Async
-    public void sendTemplateMsg(WxMpTemplateMessage msg,String appid) {
+    public void sendTemplateMsg(WxMpTemplateMessage msg, String appid) {
         TaskExcutor.submit(() -> {
-            String result;
-            try {
-                wxService.switchover(appid);
-                result = wxService.getTemplateMsgService().sendTemplateMsg(msg);
-            } catch (WxErrorException e) {
-                result = e.getMessage();
-            }
+            String result = null;
+//            try {
+//                wxService.switchover(appid);
+//                result = wxService.getTemplateMsgService().sendTemplateMsg(msg);
+//            } catch (WxErrorException e) {
+//                result = e.getMessage();
+//            }
 
             //保存发送日志
             TemplateMsgLog log = new TemplateMsgLog(msg,appid, result);
@@ -63,7 +62,7 @@ public class TemplateMsgServiceImpl implements TemplateMsgService {
 	@Async
     public void sendMsgBatch(TemplateMsgBatchForm form, String appid) {
 		logger.info("批量发送模板消息任务开始,参数：{}",form.toString());
-        wxService.switchover(appid);
+//        wxService.switchover(appid);
 		WxMpTemplateMessage.WxMpTemplateMessageBuilder builder = WxMpTemplateMessage.builder()
 				.templateId(form.getTemplateId())
 				.url(form.getUrl())

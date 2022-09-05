@@ -1,5 +1,6 @@
 package com.github.niefy.modules.wx.service;
 
+import cn.wildfirechat.sdk.ChannelServiceApi;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.modules.wx.entity.WxAccount;
@@ -26,5 +27,7 @@ public interface WxAccountService extends IService<WxAccount> {
 
     @Override
     boolean removeByIds(Collection<?> idList);
+
+    ChannelServiceApi getApi(String appid);
 }
 
