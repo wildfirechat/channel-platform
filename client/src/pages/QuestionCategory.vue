@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         getCategoryQuestions() {
-            this.$fly.get('/wx/article/category', {
+            this.$fly.get('/article/category', {
                 type: 'QUESTION',
                 category: this.category
             }).then(res => {

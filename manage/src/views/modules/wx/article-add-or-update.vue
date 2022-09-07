@@ -78,7 +78,7 @@ export default {
                 summary: "",
                 tags: "",
                 openCount: 0,
-                targetLink: location.origin + "/client/#/article/${articleId}",
+                targetLink: location.origin + "/client/index.html#/article/${articleId}",
                 image: ""
             },
             dataRule: {

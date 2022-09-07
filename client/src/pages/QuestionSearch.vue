@@ -34,7 +34,7 @@ export default {
     methods: {
         search() {
             if (!this.keywords || '' == this.keywords.trim()) return
-            this.$fly.get('/wx/article/search', {
+            this.$fly.get('/article/search', {
                 type: 'QUESTION',
                 keywords: this.keywords
             }).then(res => {

@@ -57,7 +57,7 @@ export default {
         },
         getUserTags() {
             this.openSubscribeLoading = true
-            this.$fly.get('/wx/wxUserTags/userTags').then(res => {
+            this.$fly.get('/wxUserTags/userTags').then(res => {
                 this.openSubscribeLoading = false
                 if (res.code == 200) {
                     this.wxUserTags = res.data;
@@ -88,7 +88,7 @@ export default {
             } else {//移除了标签
                 this.wxUserTags.splice(this.wxUserTags.indexOf(tagid), 1)
             }
-            this.$fly.post(`/wx/wxUserTags/${newStatus ? 'tagging' : 'untagging'}`, {
+            this.$fly.post(`/wxUserTags/${newStatus ? 'tagging' : 'untagging'}`, {
                 tagid: tagid
             }).then(res => {
                 this.openSubscribe[index].saving = false

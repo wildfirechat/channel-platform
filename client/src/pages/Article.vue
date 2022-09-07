@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         getDetail() {
-            this.$fly.get('/wx/article/detail', {
+            this.$fly.get('/article/detail', {
                 articleId: this.articleId
             }).then(res => {
                 if (res.code == 200) {

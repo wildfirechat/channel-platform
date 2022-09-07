@@ -6,8 +6,8 @@ server:
         min-spare-threads: 30
     port: ${SERVER_PORT:8088}
     connection-timeout: 5000ms
-    servlet:
-        context-path: /wx
+#    servlet:
+#        context-path: /wx
 
 debug: false
 

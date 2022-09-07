@@ -19,7 +19,7 @@ export default function wxAuth() {
             let currentUrl = encodeURIComponent(window.location.href);
             window.location.replace(WX_AUTH_URL.replace('REDIRECT_URI', currentUrl));
         } else {
-            fly.post('/wx/wxAuth/codeToOpenid', {
+            fly.post('/wxAuth/codeToOpenid', {
                 code: code
             }).then(res => {
                 if (res.code == 200) {

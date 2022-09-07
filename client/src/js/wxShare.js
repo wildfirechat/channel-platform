@@ -37,7 +37,7 @@ function loadShareSignature() {
         setShareConfig(shareSignature);
         return;
     }
-    fly.get('/wx/wxAuth/getShareSignature',null,{
+    fly.get('/wxAuth/getShareSignature',null,{
         headers:{
             'wx-client-href':location.href
         }
