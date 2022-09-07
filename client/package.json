@@ -4,14 +4,20 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && npm run delpreviousrelease && npm run copyrelease",
+    "delpreviousrelease": "node script/del.js ../server/src/main/resources/static/client",
+    "copyrelease": "node script/copydir.js dist/ ../server/src/main/resources/static/client",
     "uat": "vue-cli-service build --mode uat"
   },
   "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "copy-dir": "^1.3.0",
+    "cpy-cli": "^3.1.1",
+    "del-cli": "^3.0.1",
+    "shelljs": "^0.7.6"
   },
   "postcss": {
     "plugins": {

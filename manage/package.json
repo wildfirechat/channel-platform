@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build && npm run delpreviousrelease && npm run copyrelease",
+    "delpreviousrelease": "node script/del.js ../server/src/main/resources/static",
+    "copyrelease": "node script/copydir.js dist/ ../server/src/main/resources/static"
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.6",
@@ -23,7 +25,11 @@
     "@vue/cli-service": "^4.5.9",
     "sass": "^1.51.0",
     "sass-loader": "10.2.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "copy-dir": "^1.3.0",
+    "cpy-cli": "^3.1.1",
+    "del-cli": "^3.0.1",
+    "shelljs": "^0.7.6"
   },
   "postcss": {
     "plugins": {
