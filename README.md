@@ -4,20 +4,18 @@
 ## 野火频道系统
 野火频道系统包括3部分。[server](./server)为野火频道服务的后端服务，给管理后台页面和客户端页面提供服务；[manage](./manage)为野火频道管理页面，管理员可以登录并管理频道；[client](./client)为客户端页面，在用户手机展示文章内容。
 
-使用野火频道服务必须部署后端服务、管理后台页面和客户端页面。
-
 ## 依赖
-后端依赖Java1.8/MySQL 5.7+，前端依赖nodejs。
+依赖Java1.8
 
 ## 编译manage
-进入到[manage](./manage)目录，执行下述命令
+编译机器上按照nodejs，进入到[manage](./manage)目录，执行下述命令
 ```
 npm install
 npm run build
 ```
 
 ## 编译client
-进入到[client](./client)目录，执行下述命令
+编译机器上按照nodejs，进入到[client](./client)目录，执行下述命令
 ```
 npm install
 npm run build
@@ -33,16 +31,16 @@ mvn clean package
 生产软件包```channel-api.jar```在```target```目录下。
 
 ## 配置
-修改 ```server/config/application-{dev|prod}.yml```文件，配置正确的mysql地址。另外修改```server/config/logback-spring.yml```文件，修改```<fileNamePattern>/usr/local/wx/logs/wx.%d.log</fileNamePattern>``` 行指定存在可读写的路径。
+默认使用h2db，可以不用修改配置直接运行。如果要是想使用mysql，需要修改 ```server/config/application-{dev|prod}.yml```文件，按照说明配置。
 
 ## 运行
-把```server/config```目录拷贝到```channel-api.jar```同目录，然后执行下面语句：
+服务器安装有jdk1.8。把```server/config```目录拷贝到```channel-api.jar```同目录，然后执行下面语句：
 ```shell
 java -jar channel-api.jar
 ```
 
 ## 登录
-需要部署后端管理页面，具体方法参考管理页面项目。使用用户名密码 ```admin/123456``` 来进行登录，登录后可以修改管理员密码和添加更多管理员。
+当运行成功无报错后，使用浏览器打开```http://${ip地址}:8088```。使用用户名密码 ```admin/123456``` 来进行登录，登录后可以修改管理员密码和添加更多管理员。
 
 ## 对接野火IM服务
 1. 在野火IM服务创建频道，频道```auto```参数为1，```callback```为 ```http://{频道后端IP}:8890/{频道ID}```。
