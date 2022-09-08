@@ -31,3 +31,6 @@ src/main/resources/static/
 hs_err_pid*
 wx-api.iml
 server/src/main/resources/static
+channel_server.lock.db
+channel_server.mv.db
+channel_server.trace.db

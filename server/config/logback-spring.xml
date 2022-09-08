@@ -33,7 +33,8 @@
         <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径-->
-            <fileNamePattern>/usr/local/wx/logs/wx.%d.log</fileNamePattern>
+<!--            <fileNamePattern>/usr/local/wx/logs/wx.%d.log</fileNamePattern>-->
+            <fileNamePattern>channel.%d.log</fileNamePattern>
             <MaxHistory>100</MaxHistory>
         </rollingPolicy>
     </appender>
