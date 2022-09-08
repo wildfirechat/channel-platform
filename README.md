@@ -7,10 +7,7 @@
 使用野火频道服务必须部署后端服务、管理后台页面和客户端页面。
 
 ## 依赖
-依赖Java1.8/MySQL 5.7+
-
-## 配置
-修改 ```src/main/resources/application-{dev|prod}.yml```文件，配置正确的mysql地址。另外修改```src/main/resources/logback-spring.yml```文件，修改```<fileNamePattern>/usr/local/wx/logs/wx.%d.log</fileNamePattern>``` 行指定存在可读写的路径。
+后端依赖Java1.8/MySQL 5.7+，前端依赖nodejs。
 
 ## 编译manage
 进入到[manage](./manage)目录，执行下述命令
