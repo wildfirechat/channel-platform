@@ -224,13 +224,13 @@ CREATE TABLE IF NOT EXISTS `sys_user_token`  (
 -- Table structure for wx_account
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_account`  (
-  `appid` char(20) NOT NULL PRIMARY KEY COMMENT 'appid',
+  `appid` char(36) NOT NULL PRIMARY KEY COMMENT 'appid',
   `imurl` varchar(1024) NOT NULL COMMENT 'imurl',
   `name` varchar(50) NOT NULL COMMENT '公众号名称',
   `type` tinyint(1) UNSIGNED NULL DEFAULT 1 COMMENT '账号类型',
   `verified` tinyint(1) UNSIGNED NULL DEFAULT 1 COMMENT '认证状态',
-  `secret` char(32) NOT NULL COMMENT 'appsecret',
-  `token` varchar(32) NULL DEFAULT NULL COMMENT 'token',
+  `secret` char(36) NOT NULL COMMENT 'appsecret',
+  `token` varchar(36) NULL DEFAULT NULL COMMENT 'token',
   `aes_key` varchar(43) NULL DEFAULT NULL COMMENT 'aesKey'
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = '公众号账号' ROW_FORMAT = Dynamic;
 
@@ -239,8 +239,8 @@ CREATE TABLE IF NOT EXISTS `wx_account`  (
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_msg`  (
   `id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
-  `appid` char(20) NOT NULL COMMENT 'appid',
-  `openid` varchar(32) NOT NULL COMMENT '微信用户ID',
+  `appid` char(36) NOT NULL COMMENT 'appid',
+  `openid` varchar(36) NOT NULL COMMENT '微信用户ID',
   `in_out` tinyint(1) UNSIGNED NULL DEFAULT NULL COMMENT '消息方向',
   `msg_type` char(25) NULL DEFAULT NULL COMMENT '消息类型',
   `detail` json NULL COMMENT '消息详情',
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `wx_msg`  (
 DROP TABLE IF EXISTS `wx_msg_reply_rule`;
 CREATE TABLE IF NOT EXISTS `wx_msg_reply_rule`  (
   `rule_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `appid` char(20) NULL DEFAULT '' COMMENT 'appid',
+  `appid` char(36) NULL DEFAULT '' COMMENT 'appid',
   `rule_name` varchar(20) NOT NULL COMMENT '规则名称',
   `match_value` varchar(200) NOT NULL COMMENT '匹配的关键词、事件等',
   `exact_match` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否精确匹配',
@@ -280,7 +280,7 @@ INSERT INTO `wx_msg_reply_rule` VALUES (2, '', '默认回复', 'default_reply', 
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_msg_template`  (
   `id` bigint(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
-  `appid` char(20) NOT NULL COMMENT 'appid',
+  `appid` char(36) NOT NULL COMMENT 'appid',
   `template_id` varchar(100) NOT NULL COMMENT '公众号模板ID',
   `name` varchar(50) NULL DEFAULT NULL COMMENT '模版名称',
   `title` varchar(20) NULL DEFAULT NULL COMMENT '标题',
@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `wx_msg_template`  (
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_qr_code`  (
   `id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
-  `appid` char(20) NOT NULL COMMENT 'appid',
+  `appid` char(36) NOT NULL COMMENT 'appid',
   `is_temp` tinyint(1) NULL DEFAULT NULL COMMENT '是否为临时二维码',
   `scene_str` varchar(64) NULL DEFAULT NULL COMMENT '场景值ID',
   `ticket` varchar(255) NULL DEFAULT NULL COMMENT '二维码ticket',
@@ -316,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `wx_qr_code`  (
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_template_msg_log`  (
   `log_id` bigint(11) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
-  `appid` char(20) NOT NULL COMMENT 'appid',
+  `appid` char(36) NOT NULL COMMENT 'appid',
   `touser` varchar(50) NULL DEFAULT NULL COMMENT '用户openid',
   `template_id` varchar(50) NULL DEFAULT NULL COMMENT 'templateid',
   `data` json NULL COMMENT '消息数据',
@@ -332,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `wx_template_msg_log`  (
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_user`  (
   `openid` varchar(50) NOT NULL PRIMARY KEY COMMENT '微信openid',
-  `appid` char(20) NOT NULL COMMENT 'appid',
+  `appid` char(36) NOT NULL COMMENT 'appid',
   `phone` char(11) NULL DEFAULT NULL COMMENT '手机号',
   `nickname` varchar(50) NULL DEFAULT NULL COMMENT '昵称',
   `sex` tinyint(4) NULL DEFAULT NULL COMMENT '性别(0-未知、1-男、2-女)',
