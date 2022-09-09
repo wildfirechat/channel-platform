@@ -26,10 +26,10 @@
       <el-input v-model="dataForm.imurl" placeholder="IM服务地址"></el-input>
     </el-form-item>
     <el-form-item label="appid" prop="appid">
-      <el-input v-model="dataForm.appid" placeholder="appid"></el-input>
+      <el-input v-model="dataForm.appid" placeholder="appid" maxlength="36"></el-input>
     </el-form-item>
     <el-form-item label="appsecret" prop="secret">
-      <el-input v-model="dataForm.secret" placeholder="appsecret"></el-input>
+      <el-input v-model="dataForm.secret" placeholder="appsecret" maxlength="36"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
