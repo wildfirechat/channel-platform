@@ -48,6 +48,7 @@ import { mapState } from 'vuex'
         dataForm: {
           appid: '',
           name: '',
+          imurl:'',
           type:'2',
           verified:true,
           secret: ''
