@@ -19,7 +19,6 @@ src/main/resources/static/
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
