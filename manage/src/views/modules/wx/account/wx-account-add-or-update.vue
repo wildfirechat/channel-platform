@@ -8,7 +8,7 @@
       <el-input v-model="dataForm.name" placeholder="公众号名称"></el-input>
     </el-form-item>
     <div class="padding text-gray">测试号可选择服务号，不同类型账号、是否认证可使用功能权限不同，<a href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Explanation_of_interface_privileges.html">参考文档</a></div>
-    <el-row>
+    <el-row v-if="false">
         <el-col :span="12">
             <el-form-item label="公众号类型" prop="type">
                 <el-select v-model="dataForm.type" placeholder="公众号类型">
@@ -49,7 +49,7 @@ import { mapState } from 'vuex'
           appid: '',
           name: '',
           imurl:'',
-          type:'2',
+          type:'1',
           verified:true,
           secret: ''
         },
