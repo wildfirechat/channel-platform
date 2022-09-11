@@ -1,5 +1,7 @@
 package com.github.niefy.modules.wx.service;
 
+import cn.wildfirechat.pojos.SendMessageResult;
+import cn.wildfirechat.sdk.model.IMResult;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.modules.wx.entity.WxMsg;
@@ -19,6 +21,8 @@ public interface WxMsgService extends IService<WxMsg> {
      * @return PageUtils 分页结果
      */
     PageUtils queryPage(Map<String, Object> params);
+
+    IMResult<SendMessageResult> send(String appid, String textMessageContent);
 
     /**
      * 记录msg，异步入库

@@ -1,5 +1,7 @@
 package com.github.niefy.modules.wx.manage;
 
+import cn.wildfirechat.pojos.SendMessageResult;
+import cn.wildfirechat.sdk.model.IMResult;
 import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.common.utils.R;
 import com.github.niefy.modules.wx.entity.WxMsg;
@@ -44,6 +46,20 @@ public class WxMsgManageController {
         return R.ok().put("page", page);
     }
 
+    @PostMapping("/send/{appid}")
+    @RequiresPermissions("wx:wxmsg:save")
+    @ApiOperation(value = "发送")
+    public R send(@PathVariable("appid") String appid, @RequestBody String textMessageContent){
+        IMResult<SendMessageResult> result = wxMsgService.send(appid, textMessageContent);
+        if (result != null){
+            if (result.code == 0){
+                return R.ok();
+            }else {
+                return R.error(result.code, result.msg);
+            }
+        }
+        return R.error(-1, "unknown error");
+    }
 
     /**
      * 信息

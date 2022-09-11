@@ -1,5 +1,9 @@
 package com.github.niefy.modules.wx.service.impl;
 
+import cn.wildfirechat.messagecontentbuilder.TextMessageContentBuilder;
+import cn.wildfirechat.pojos.SendMessageResult;
+import cn.wildfirechat.sdk.ChannelServiceApi;
+import cn.wildfirechat.sdk.model.IMResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -7,7 +11,9 @@ import com.github.niefy.common.utils.PageUtils;
 import com.github.niefy.common.utils.Query;
 import com.github.niefy.modules.wx.dao.WxMsgMapper;
 import com.github.niefy.modules.wx.entity.WxMsg;
+import com.github.niefy.modules.wx.service.WxAccountService;
 import com.github.niefy.modules.wx.service.WxMsgService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -18,6 +24,9 @@ import java.util.Map;
 
 @Service("wxMsgService")
 public class WxMsgServiceImpl extends ServiceImpl<WxMsgMapper, WxMsg> implements WxMsgService {
+
+    @Autowired
+    WxAccountService wxAccountService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -35,6 +44,18 @@ public class WxMsgServiceImpl extends ServiceImpl<WxMsgMapper, WxMsg> implements
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public IMResult<SendMessageResult> send(String appid, String textMessageContent) {
+        TextMessageContentBuilder builder = TextMessageContentBuilder.newBuilder(textMessageContent);
+            ChannelServiceApi api = wxAccountService.getApi(appid);
+        try {
+            return api.sendMessage(0, null, builder.build());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

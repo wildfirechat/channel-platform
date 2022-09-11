@@ -15,6 +15,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button @click="getDataList()">查询</el-button>
+                <el-button @click="showSendMsgDialog = true">发送消息</el-button>
             </el-form-item>
         </el-form>
         <div class="text-gray">
@@ -40,10 +41,25 @@
         </el-pagination>
         <!-- 弹窗, 消息回复 -->
         <wx-msg-reply ref="wxMsgReply" @success="onReplyed"></wx-msg-reply>
+        <el-dialog
+            title="发送文本消息"
+            :close-on-click-modal="false"
+            :visible.sync="showSendMsgDialog">
+            <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="sendTextMessageContent" label-width="100px">
+                <el-form-item label="消息内容" prop="toSendTextMessageContent">
+                    <el-input v-model="dataForm.toSendTextMessageContent" placeholder="文本消息内容"></el-input>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="showSendMsgDialog = false">取消</el-button>
+                <el-button type="primary" @click="sendTextMessageContent">发送</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 const TIME_FORMAT = 'YYYY/MM/DD hh:mm:ss'
 export default {
     data() {
@@ -56,7 +72,13 @@ export default {
             },
             dataForm: {
                 startTime: this.$moment().subtract(1, 'days').format(TIME_FORMAT),
-                msgTypes: ''
+                msgTypes: '',
+                toSendTextMessageContent: '',
+            },
+            dataRule: {
+                toSendTextMessageContent: [
+                    {required: true, message: "消息内容不能为空", trigger: "blur"}
+                ]
             },
             dataList: [],
             userDataList:[],
@@ -64,7 +86,8 @@ export default {
             pageSize: 20,
             totalCount: 0,
             dataListLoading: false,
-            dataListSelections: []
+            dataListSelections: [],
+            showSendMsgDialog: false,
         }
     },
     components: {
@@ -74,6 +97,9 @@ export default {
     activated() {
         this.getDataList()
     },
+    computed: mapState({
+        selectedAppid:state=>state.wxAccount.selectedAppid
+    }),
     methods: {
         // 获取数据列表
         getDataList() {
@@ -153,6 +179,29 @@ export default {
                 inOut : 1,
                 createTime : new Date()
             })
+        },
+        sendTextMessageContent() {
+
+            this.$refs['dataForm'].validate((valid) => {
+                if (valid) {
+                    this.$http({
+                        url: this.$http.adornUrl(`/manage/wxMsg/send/${this.selectedAppid}`),
+                        method: 'post',
+                        data: this.dataForm.toSendTextMessageContent,
+                    }).then(({ data }) => {
+                        if (data && data.code === 200) {
+                            this.$message({
+                                message: '操作成功',
+                                type: 'success',
+                                duration: 1500,
+                                onClose: () => this.getDataList()
+                            })
+                        } else {
+                            this.$message.error(data.msg)
+                        }
+                    })
+                }
+            });
         }
     }
 }
