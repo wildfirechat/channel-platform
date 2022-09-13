@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 微信粉丝
+ * 粉丝
  * @author Nifury
  * @date 2017-9-27
  */

@@ -192,9 +192,9 @@ public enum WxMpErrorMsgEnum {
      */
     CODE_40121(40121, "不合法的 media_id 类型"),
     /**
-     * 微信号不合法.
+     * 野火号不合法.
      */
-    CODE_40132(40132, "微信号不合法"),
+    CODE_40132(40132, "野火号不合法"),
     /**
      * 不支持的图片格式.
      */
@@ -256,9 +256,9 @@ public enum WxMpErrorMsgEnum {
      */
     CODE_42003(42003, "oauth_code 超时"),
     /**
-     * 用户修改微信密码， accesstoken 和 refreshtoken 失效，需要重新授权.
+     * 用户修改密码， accesstoken 和 refreshtoken 失效，需要重新授权.
      */
-    CODE_42007(42007, "用户修改微信密码， accesstoken 和 refreshtoken 失效，需要重新授权"),
+    CODE_42007(42007, "用户修改密码， accesstoken 和 refreshtoken 失效，需要重新授权"),
     /**
      * 需要 GET 请求.
      */
@@ -448,9 +448,9 @@ public enum WxMpErrorMsgEnum {
      */
     CODE_61453(61453, "客服帐号已存在 (kf_account exsited)"),
     /**
-     * 客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的微信号 )(invalid kf_acount length).
+     * 客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的野火号 )(invalid kf_acount length).
      */
-    CODE_61454(61454, "客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的微信号 )(invalid kf_acount length)"),
+    CODE_61454(61454, "客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的野火号 )(invalid kf_acount length)"),
     /**
      * 客服帐号名包含非法字符 ( 仅允许英文 + 数字 )(illegal character in kf_account).
      */

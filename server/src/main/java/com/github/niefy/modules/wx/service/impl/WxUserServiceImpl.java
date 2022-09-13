@@ -75,7 +75,7 @@ public class WxUserServiceImpl extends ServiceImpl<WxUserMapper, WxUser> impleme
     @Override
     public WxUser refreshUserInfo(String openid,String appid) {
         try {
-			// 获取微信用户基本信息
+			// 获取用户基本信息
 			logger.info("更新用户信息，openid={}",openid);
 			ChannelServiceApi api = wxAccountService.getApi(appid);
 			IMResult<InputOutputUserInfo>  imResult = api.getUserInfo(openid);

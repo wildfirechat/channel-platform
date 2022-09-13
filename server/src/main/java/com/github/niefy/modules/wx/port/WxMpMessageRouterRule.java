@@ -112,14 +112,14 @@ public class WxMpMessageRouterRule {
     }
 
     /**
-     * 设置微信消息拦截器
+     * 设置消息拦截器
      */
     public WxMpMessageRouterRule interceptor(WxMpMessageInterceptor interceptor) {
         return interceptor(interceptor, (WxMpMessageInterceptor[]) null);
     }
 
     /**
-     * 设置微信消息拦截器
+     * 设置消息拦截器
      */
     public WxMpMessageRouterRule interceptor(WxMpMessageInterceptor interceptor, WxMpMessageInterceptor... otherInterceptors) {
         this.interceptors.add(interceptor);
@@ -130,14 +130,14 @@ public class WxMpMessageRouterRule {
     }
 
     /**
-     * 设置微信消息处理器
+     * 设置消息处理器
      */
     public WxMpMessageRouterRule handler(WxMpMessageHandler handler) {
         return handler(handler, (WxMpMessageHandler[]) null);
     }
 
     /**
-     * 设置微信消息处理器
+     * 设置消息处理器
      */
     public WxMpMessageRouterRule handler(WxMpMessageHandler handler, WxMpMessageHandler... otherHandlers) {
         this.handlers.add(handler);
@@ -166,8 +166,8 @@ public class WxMpMessageRouterRule {
     }
 
     /**
-     * 将微信自定义的事件修正为不区分大小写,
-     * 比如框架定义的事件常量为click，但微信传递过来的却是CLICK
+     * 将自定义的事件修正为不区分大小写,
+     * 比如框架定义的事件常量为click，但传递过来的却是CLICK
      */
     protected boolean test(WxMpXmlMessage wxMessage) {
         return
@@ -190,7 +190,7 @@ public class WxMpMessageRouterRule {
     }
 
     /**
-     * 处理微信推送过来的消息
+     * 处理推送过来的消息
      *
      * @param wxMessage
      * @return true 代表继续执行别的router，false 代表停止执行别的router

@@ -41,13 +41,13 @@ public class WxOAuth2UserInfo implements Serializable {
     @SerializedName("headimgurl")
     private String headImgUrl;
     /**
-     * unionid	用户统一标识。针对一个微信开放平台帐号下的应用，同一用户的unionid是唯一的。
+     * unionid	用户统一标识。针对一个开放平台帐号下的应用，同一用户的unionid是唯一的。
      */
     @SerializedName("unionid")
     private String unionId;
 
     /**
-     * privilege	用户特权信息，json数组，如微信沃卡用户为（chinaunicom）
+     * privilege	用户特权信息，json数组，如沃卡用户为（chinaunicom）
      */
     @SerializedName("privilege")
     private String[] privileges;

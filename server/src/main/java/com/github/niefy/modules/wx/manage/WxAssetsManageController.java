@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 微信公众号素材管理
+ * 公众号素材管理
  * 参考官方文档：https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html
- * 参考WxJava开发文档：https://github.com/Wechat-Group/WxJava/wiki/MP_永久素材管理
+ * 参考WxJava开发文档：https://github.com/-Group/WxJava/wiki/MP_永久素材管理
  */
 @RestController
 @RequestMapping("/manage/wxAssets")

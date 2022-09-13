@@ -21,7 +21,7 @@ public class WxMpXmlMessage implements Serializable {
     private Map<String, Object> allFieldsMap;
 
     ///////////////////////
-    // 以下都是微信推送过来的消息的xml的element所对应的属性
+    // 以下都是推送过来的消息的xml的element所对应的属性
     ///////////////////////
 
     private String toUser;
@@ -150,7 +150,7 @@ public class WxMpXmlMessage implements Serializable {
      * 领取场景值，用于领取渠道数据统计。可在生成二维码接口及添加Addcard接口中自定义该字段的字符串值.
      * 核销卡券时：开发者发起核销时传入的自定义参数，用于进行核销渠道统计
      * 另外：
-     * 官网文档中，微信卡券>>卡券事件推送>>2.7 进入会员卡事件推送 user_view_card
+     * 官网文档中，卡券>>卡券事件推送>>2.7 进入会员卡事件推送 user_view_card
      * OuterStr：商户自定义二维码渠道参数，用于标识本次扫码打开会员卡来源来自于某个渠道值的二维码
      * </pre>
      */
@@ -168,7 +168,7 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * 核销来源.
-     * 支持开发者统计API核销（FROM_API）、公众平台核销（FROM_MP）、卡券商户助手核销（FROM_MOBILE_HELPER）（核销员微信号）
+     * 支持开发者统计API核销（FROM_API）、公众平台核销（FROM_MP）、卡券商户助手核销（FROM_MOBILE_HELPER）（核销员野火号）
      */
     private String consumeSource;
 
@@ -195,7 +195,7 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.10 库存报警事件card_sku_remind
+     * 官网文档中，卡券>>卡券事件推送>>2.10 库存报警事件card_sku_remind
      * Detail：报警详细信息.
      * </pre>
      */
@@ -203,7 +203,7 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.9 会员卡内容更新事件 update_member_card
+     * 官网文档中，卡券>>卡券事件推送>>2.9 会员卡内容更新事件 update_member_card
      * ModifyBonus：变动的积分值.
      * </pre>
      */
@@ -211,7 +211,7 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.9 会员卡内容更新事件 update_member_card
+     * 官网文档中，卡券>>卡券事件推送>>2.9 会员卡内容更新事件 update_member_card
      * ModifyBalance：变动的余额值.
      * </pre>
      */
@@ -219,15 +219,15 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
-     * TransId：微信支付交易订单号（只有使用买单功能核销的卡券才会出现）.
+     * 官网文档中，卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
+     * TransId：支付交易订单号（只有使用买单功能核销的卡券才会出现）.
      * </pre>
      */
     private String transId;
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
+     * 官网文档中，卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
      * LocationId：门店ID，当前卡券核销的门店ID（只有通过卡券商户助手和买单核销时才会出现）
      * </pre>
      */
@@ -235,7 +235,7 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
+     * 官网文档中，卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
      * Fee：实付金额，单位为分
      * </pre>
      */
@@ -243,7 +243,7 @@ public class WxMpXmlMessage implements Serializable {
 
     /**
      * <pre>
-     * 官网文档中，微信卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
+     * 官网文档中，卡券>>卡券事件推送>>2.6 买单事件推送 User_pay_from_pay_cell
      * OriginalFee：应付金额，单位为分
      * </pre>
      */
@@ -360,7 +360,7 @@ public class WxMpXmlMessage implements Serializable {
     private String storeUniqId;
 
     /**
-     * 微信的门店ID，微信内门店唯一标示ID.
+     * 的门店ID，内门店唯一标示ID.
      */
     //@XStreamAlias("PoiId")
     //@JacksonXmlProperty(localName = "PoiId")
@@ -383,12 +383,12 @@ public class WxMpXmlMessage implements Serializable {
     private String msg;
 
     ///////////////////////////////////////
-    // 微信认证事件推送
+    // 认证事件推送
     ///////////////////////////////////////
     /**
      * 资质认证成功/名称认证成功: 有效期 (整形)，指的是时间戳，将于该时间戳认证过期.
      * 年审通知: 有效期 (整形)，指的是时间戳，将于该时间戳认证过期，需尽快年审
-     * 认证过期失效通知: 有效期 (整形)，指的是时间戳，表示已于该时间戳认证过期，需要重新发起微信认证
+     * 认证过期失效通知: 有效期 (整形)，指的是时间戳，表示已于该时间戳认证过期，需要重新发起认证
      */
     //@XStreamAlias("ExpiredTime")
     //@JacksonXmlProperty(localName = "ExpiredTime")
@@ -407,7 +407,7 @@ public class WxMpXmlMessage implements Serializable {
     private String failReason;
 
     ///////////////////////////////////////
-    // 微信小店 6.1订单付款通知
+    // 小店 6.1订单付款通知
     ///////////////////////////////////////
     /**
      * 订单ID.
@@ -444,7 +444,7 @@ public class WxMpXmlMessage implements Serializable {
     private String skuInfo;
 
     ///////////////////////////////////////
-    // 微信硬件平台相关事件推送
+    // 硬件平台相关事件推送
     ///////////////////////////////////////
     /**
      * 设备类型.
@@ -467,7 +467,7 @@ public class WxMpXmlMessage implements Serializable {
     private String deviceId;
 
     /**
-     * 微信客户端生成的session id，用于request和response对应，
+     * 客户端生成的session id，用于request和response对应，
      * 因此响应中该字段第三方需要原封不变的带回
      */
     //@XStreamAlias("SessionID")
@@ -477,7 +477,7 @@ public class WxMpXmlMessage implements Serializable {
     private String sessionId;
 
     /**
-     * 微信用户账号的OpenID.
+     * 用户账号的OpenID.
      */
     //@XStreamAlias("OpenID")
     //@XStreamConverter(value = XStreamCDataConverter.class)
@@ -541,21 +541,21 @@ public class WxMpXmlMessage implements Serializable {
     private String keyStr;
 
     /**
-     * 用户在微信内设置的国家
+     * 用户在内设置的国家
      */
     //@XStreamAlias("Country")
     //@JacksonXmlProperty(localName = "Country")
     private String country;
 
     /**
-     * 用户在微信内设置的省份
+     * 用户在内设置的省份
      */
     //@XStreamAlias("Province")
     //@JacksonXmlProperty(localName = "Province")
     private String province;
 
     /**
-     * 用户在微信内设置的城市
+     * 用户在内设置的城市
      */
     //@XStreamAlias("City")
     //@JacksonXmlProperty(localName = "City")
@@ -654,7 +654,7 @@ public class WxMpXmlMessage implements Serializable {
     private String encrypt;
 
     public static WxMpXmlMessage fromXml(String xml) {
-        //修改微信变态的消息内容格式，方便解析
+        //修改变态的消息内容格式，方便解析
 //        xml = xml.replace("</PicList><PicList>", "");
 //        final WxMpXmlMessage xmlMessage = XStreamTransformer.fromXml(WxMpXmlMessage.class, xml);
 //        xmlMessage.setAllFieldsMap(XmlUtils.xml2Map(xml));

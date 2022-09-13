@@ -201,14 +201,14 @@ public interface WxMpConfigStorage {
     boolean autoRefreshToken();
 
     /**
-     * 得到微信接口地址域名部分的自定义设置信息.
+     * 得到接口地址域名部分的自定义设置信息.
      *
      * @return the host config
      */
     WxMpHostConfig getHostConfig();
 
     /**
-     * 设置微信接口地址域名部分的自定义设置信息.
+     * 设置接口地址域名部分的自定义设置信息.
      *
      * @param hostConfig host config
      */

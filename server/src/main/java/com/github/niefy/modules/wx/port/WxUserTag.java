@@ -11,7 +11,7 @@ public class WxUserTag implements Serializable {
     private static final long serialVersionUID = -7722428695667031252L;
 
     /**
-     * 标签id，由微信分配.
+     * 标签id，由分配.
      */
     private Long id;
 

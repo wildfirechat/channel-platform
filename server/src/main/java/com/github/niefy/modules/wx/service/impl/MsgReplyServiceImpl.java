@@ -27,9 +27,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 微信公众号消息处理
+ * 公众号消息处理
  * 官方文档：https://developers.weixin.qq.com/doc/offiaccount/Message_Ma nagement/Service_Center_messages.html#7
- * 参考WxJava客服消息文档：https://github.com/Wechat-Group/WxJava/wiki/MP_主动发送消息（客服消息）
+ * 参考WxJava客服消息文档：https://github.com/-Group/WxJava/wiki/MP_主动发送消息（客服消息）
  */
 @Service
 @RequiredArgsConstructor
@@ -47,7 +47,7 @@ public class MsgReplyServiceImpl implements MsgReplyService {
     private WxAccountService wxAccountService;
 
     /**
-     * 根据规则配置通过微信客服消息接口自动回复消息
+     * 根据规则配置通过客服消息接口自动回复消息
      *
      *
      * @param appid 公众号appid

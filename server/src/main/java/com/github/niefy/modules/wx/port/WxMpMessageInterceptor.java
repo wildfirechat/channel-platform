@@ -4,14 +4,14 @@ package com.github.niefy.modules.wx.port;
 import java.util.Map;
 
 /**
- * 微信消息拦截器，可以用来做验证
+ * 消息拦截器，可以用来做验证
  *
  * @author Daniel Qian
  */
 public interface WxMpMessageInterceptor {
 
     /**
-     * 拦截微信消息
+     * 拦截消息
      *
      * @param wxMessage
      * @param context        上下文，如果handler或interceptor之间有信息要传递，可以用这个

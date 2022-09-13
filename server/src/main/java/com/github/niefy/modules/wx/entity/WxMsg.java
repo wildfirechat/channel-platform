@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 微信消息
+ * 消息
  * 
  * @author niefy
  * @date 2020-05-14 17:28:34
@@ -30,7 +30,7 @@ public class WxMsg implements Serializable {
 	private Long id;
 	private String appid;
 	/**
-	 * 微信用户ID
+	 * 用户ID
 	 */
 	private String openid;
 	/**

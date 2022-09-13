@@ -50,7 +50,7 @@ public class RRExceptionHandler {
 //    @ExceptionHandler({WxErrorException.class})
 //    public R handleWxErrorException(WxErrorException e) {
 //        logger.error(e.getMessage(), e);
-//        return R.error("微信公众平台接口错误:" + e.getError().getErrorMsg());
+//        return R.error("公众平台接口错误:" + e.getError().getErrorMsg());
 //    }
 
     @ExceptionHandler(Exception.class)

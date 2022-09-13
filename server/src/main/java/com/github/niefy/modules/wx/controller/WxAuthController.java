@@ -21,11 +21,11 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 /**
- * 微信网页授权相关
+ * 网页授权相关
  */
 @RestController
 @RequestMapping("/wxAuth")
-@Api(tags = {"微信网页授权"})
+@Api(tags = {"网页授权"})
 @RequiredArgsConstructor
 public class WxAuthController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -34,7 +34,7 @@ public class WxAuthController {
 //    private final WxMpService wxMpService;
 
     /**
-     * 使用微信授权code换取openid
+     * 使用授权code换取openid
      *
      * @param request
      * @param response
@@ -62,7 +62,7 @@ public class WxAuthController {
     }
 
     /**
-     * 使用微信授权code换取用户信息(需scope为 snsapi_userinfo)
+     * 使用授权code换取用户信息(需scope为 snsapi_userinfo)
      *
      * @param request
      * @param response
@@ -91,21 +91,21 @@ public class WxAuthController {
     }
 
     /**
-     * 获取微信分享的签名配置
-     * 允许跨域（只有微信公众号添加了js安全域名的网站才能加载微信分享，故这里不对域名进行校验）
+     * 获取分享的签名配置
+     * 允许跨域（只有公众号添加了js安全域名的网站才能加载分享，故这里不对域名进行校验）
      *
      * @param request
      * @param response
      * @return
      */
     @GetMapping("/getShareSignature")
-    @ApiOperation(value = "获取微信分享的签名配置",notes = "微信公众号添加了js安全域名的网站才能加载微信分享")
+    @ApiOperation(value = "获取分享的签名配置",notes = "公众号添加了js安全域名的网站才能加载分享")
     public R getShareSignature(HttpServletRequest request, HttpServletResponse response,@CookieValue String appid) throws WxErrorException {
 //        this.wxMpService.switchoverTo(appid);
 //        // 1.拼接url（当前网页的URL，不包含#及其后面部分）
 //        String wxShareUrl = request.getHeader(Constant.WX_CLIENT_HREF_HEADER);
 //        if (!StringUtils.hasText(wxShareUrl)) {
-//            return R.error("header中缺少"+Constant.WX_CLIENT_HREF_HEADER+"参数，微信分享加载失败");
+//            return R.error("header中缺少"+Constant.WX_CLIENT_HREF_HEADER+"参数，分享加载失败");
 //        }
 //        wxShareUrl = wxShareUrl.split("#")[0];
 //        Map<String, String> wxMap = new TreeMap<>();

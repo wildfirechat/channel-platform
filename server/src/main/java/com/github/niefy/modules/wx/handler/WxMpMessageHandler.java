@@ -6,9 +6,9 @@ import java.util.Map;
 
 public interface WxMpMessageHandler {
     /**
-     * 处理微信推送消息.
+     * 处理推送消息.
      *
-     * @param wxMessage      微信推送消息
+     * @param wxMessage      推送消息
      * @param context        上下文，如果handler或interceptor之间有信息要传递，可以用这个
      * @param wxMpService    服务类
      * @param sessionManager session管理器

@@ -15,7 +15,7 @@ public enum TicketType {
      */
     SDK("2"),
     /**
-     * 微信卡券
+     * 卡券
      */
     WX_CARD("wx_card");
 

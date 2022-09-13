@@ -106,21 +106,21 @@ public class WxMpMessageRouter {
     }
 
     /**
-     * 处理微信消息.
+     * 处理消息.
      */
     public WxMpXmlOutMessage route(final WxMpXmlMessage wxMessage, final Map<String, Object> context) {
         return route(wxMessage, context, null);
     }
 
     /**
-     * 处理不同appid微信消息
+     * 处理不同appid消息
      */
     public WxMpXmlOutMessage route(final String appid, final WxMpXmlMessage wxMessage, final Map<String, Object> context) {
         return route(wxMessage, context, null);
     }
 
     /**
-     * 处理微信消息.
+     * 处理消息.
      */
     public WxMpXmlOutMessage route(final WxMpXmlMessage wxMessage, final Map<String, Object> context, WxMpService wxMpService) {
         if (wxMpService == null) {

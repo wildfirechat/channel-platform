@@ -20,12 +20,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 微信消息
+ * 消息
  * @author Binary Wang
  */
 @RequiredArgsConstructor
 @RestController
-@Api(tags = {"微信消息 - 腾讯会调用"})
+@Api(tags = {"消息 - 腾讯会调用"})
 public class WxMpPortalController {
 //    private final WxMpService wxService;
 //    private final WxMpMessageRouter messageRouter;
@@ -42,10 +42,10 @@ public class WxMpPortalController {
 
 
     @PostMapping(path = "/{appid}/message", produces = "application/json; charset=UTF-8")
-    @ApiOperation(value = "微信各类消息",notes = "公众号接入开发模式后才有效")
+    @ApiOperation(value = "各类消息",notes = "公众号接入开发模式后才有效")
     public String post(@PathVariable String appid,
                        @RequestBody OutputMessageData event) {
-//		logger.debug("\n接收微信请求：[openid=[{}], [signature=[{}], encType=[{}], msgSignature=[{}],"
+//		logger.debug("\n接收请求：[openid=[{}], [signature=[{}], encType=[{}], msgSignature=[{}],"
 //						+ " timestamp=[{}], nonce=[{}], requestBody=[\n{}\n] ",
 //				openid, signature, encType, msgSignature, timestamp, nonce, requestBody);
 //        this.wxService.switchoverTo(appid);
@@ -79,7 +79,7 @@ public class WxMpPortalController {
     }
 
     @PostMapping(path = "/{appid}/subscribe", produces = "application/json; charset=UTF-8")
-    @ApiOperation(value = "微信各类消息",notes = "公众号接入开发模式后才有效")
+    @ApiOperation(value = "各类消息",notes = "公众号接入开发模式后才有效")
     public String subscribe(@PathVariable String appid,
                             @RequestBody OutputNotifyChannelSubscribeStatus event) {
         try {

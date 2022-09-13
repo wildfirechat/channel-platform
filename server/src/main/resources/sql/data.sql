@@ -120,21 +120,15 @@ INSERT INTO `sys_menu` VALUES (67, 66, '查看', NULL, 'wx:msgreplyrule:list,wx:
 INSERT INTO `sys_menu` VALUES (68, 66, '新增', NULL, 'wx:msgreplyrule:save', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (69, 66, '修改', NULL, 'wx:msgreplyrule:update', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (70, 66, '删除', NULL, 'wx:msgreplyrule:delete', 2, NULL, 6);
-INSERT INTO `sys_menu` VALUES (71, 6, '模板消息', 'wx/msg-template', NULL, 1, 'config', 6);
 INSERT INTO `sys_menu` VALUES (72, 71, '查看', NULL, 'wx:msgtemplate:list,wx:msgtemplate:info', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (73, 71, '新增', NULL, 'wx:msgtemplate:save', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (74, 71, '修改', NULL, 'wx:msgtemplate:update', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (75, 71, '删除', NULL, 'wx:msgtemplate:delete', 2, NULL, 6);
-INSERT INTO `sys_menu` VALUES (81, 9, '模版消息发送记录', 'wx/template-msg-log', NULL, 1, 'config', 6);
 INSERT INTO `sys_menu` VALUES (84, 81, '列表', NULL, 'wx:templatemsglog:list', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (85, 81, '删除', NULL, 'wx:templatemsglog:delete', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (99, 32, '更新公众号菜单', '', 'wx:menu:save', 2, '', 0);
 INSERT INTO `sys_menu` VALUES (100, 33, '查看', '', 'wx:wxassets:list', 2, '', 0);
 INSERT INTO `sys_menu` VALUES (101, 33, '新增修改', '', 'wx:wxassets:save', 2, '', 0);
-INSERT INTO `sys_menu` VALUES (103, 6, '带参二维码', 'wx/wx-qrcode', NULL, 1, 'config', 6);
-INSERT INTO `sys_menu` VALUES (104, 103, '查看', NULL, 'wx:wxqrcode:list,wx:wxqrcode:info', 2, NULL, 6);
-INSERT INTO `sys_menu` VALUES (105, 103, '新增', NULL, 'wx:wxqrcode:save', 2, NULL, 6);
-INSERT INTO `sys_menu` VALUES (107, 103, '删除', NULL, 'wx:wxqrcode:delete', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (108, 6, '粉丝管理', 'wx/wx-user', NULL, 1, 'config', 6);
 INSERT INTO `sys_menu` VALUES (109, 108, '查看', NULL, 'wx:wxuser:list,wx:wxuser:info', 2, NULL, 6);
 INSERT INTO `sys_menu` VALUES (110, 108, '删除', NULL, 'wx:wxuser:delete', 2, NULL, 6);
@@ -240,13 +234,13 @@ CREATE TABLE IF NOT EXISTS `wx_account`  (
 CREATE TABLE IF NOT EXISTS `wx_msg`  (
   `id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   `appid` char(36) NOT NULL COMMENT 'appid',
-  `openid` varchar(36) NOT NULL COMMENT '微信用户ID',
+  `openid` varchar(36) NOT NULL COMMENT '用户ID',
   `in_out` tinyint(1) UNSIGNED NULL DEFAULT NULL COMMENT '消息方向',
   `msg_type` char(25) NULL DEFAULT NULL COMMENT '消息类型',
   `detail` json NULL COMMENT '消息详情',
   `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   INDEX `idx_appid`(`appid`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARACTER SET = utf8mb4 COMMENT = '微信消息' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARACTER SET = utf8mb4 COMMENT = '消息' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for wx_msg_reply_rule
@@ -273,65 +267,14 @@ CREATE TABLE IF NOT EXISTS `wx_msg_reply_rule`  (
 -- Records of wx_msg_reply_rule
 -- ----------------------------
 INSERT INTO `wx_msg_reply_rule` VALUES (1, '', '关注公众号', 'subscribe', 0, 'text', '你好，欢迎关注！', 1, '关注回复', '00:00:00', '23:59:59', 0, '2020-05-20 15:15:00');
-INSERT INTO `wx_msg_reply_rule` VALUES (2, '', '默认回复', 'default_reply', 1, 'text', '您好，感谢您对我们的关注和支持！如果您有问题，请仔细阅读我们的文档（http://docs.wildfirechat.cn)，或者在github上给我们提Issue（https://github.com/wildfirechat），或者在论坛（http://docs.wildfirechat.cn）发帖提问。如果有商务问题，请加我们微信好友（微信ID：wildfirechat 或 wfchat）', 1, '没有匹配到回复时的默认回复', '00:00:00', '23:59:59', 0, '2020-05-20 15:15:00');
+INSERT INTO `wx_msg_reply_rule` VALUES (2, '', '默认回复', 'default_reply', 1, 'text', '您好，感谢您对我们的关注和支持！如果您有问题，请仔细阅读我们的文档（http://docs.wildfirechat.cn)，或者在github上给我们提Issue（https://github.com/wildfirechat），或者在论坛（http://docs.wildfirechat.cn）发帖提问。如果有商务问题，请加我们好友（ID：wildfirechat 或 wfchat）', 1, '没有匹配到回复时的默认回复', '00:00:00', '23:59:59', 0, '2020-05-20 15:15:00');
 
--- ----------------------------
--- Table structure for wx_msg_template
--- ----------------------------
-CREATE TABLE IF NOT EXISTS `wx_msg_template`  (
-  `id` bigint(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
-  `appid` char(36) NOT NULL COMMENT 'appid',
-  `template_id` varchar(100) NOT NULL COMMENT '公众号模板ID',
-  `name` varchar(50) NULL DEFAULT NULL COMMENT '模版名称',
-  `title` varchar(20) NULL DEFAULT NULL COMMENT '标题',
-  `content` text NULL COMMENT '模板内容',
-  `data` json NULL COMMENT '消息内容',
-  `url` varchar(255) NULL DEFAULT NULL COMMENT '链接',
-  `miniprogram` json NULL COMMENT '小程序信息',
-  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '是否有效',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
-  UNIQUE INDEX `idx_name`(`name`),
-  INDEX `idx_status`(`status`),
-  INDEX `idx_template_appid`(`appid`)
-) ENGINE = InnoDB AUTO_INCREMENT = 62 DEFAULT CHARACTER SET = utf8mb4 COMMENT = '消息模板' ROW_FORMAT = Dynamic;
-
-
--- ----------------------------
--- Table structure for wx_qr_code
--- ----------------------------
-CREATE TABLE IF NOT EXISTS `wx_qr_code`  (
-  `id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
-  `appid` char(36) NOT NULL COMMENT 'appid',
-  `is_temp` tinyint(1) NULL DEFAULT NULL COMMENT '是否为临时二维码',
-  `scene_str` varchar(64) NULL DEFAULT NULL COMMENT '场景值ID',
-  `ticket` varchar(255) NULL DEFAULT NULL COMMENT '二维码ticket',
-  `url` varchar(255) NULL DEFAULT NULL COMMENT '二维码图片解析后的地址',
-  `expire_time` datetime(0) NULL DEFAULT NULL COMMENT '该二维码失效时间',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '该二维码创建时间',
-  INDEX `idx_qr_appid`(`appid`)
-) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARACTER SET = utf8mb4 COMMENT = '公众号带参二维码' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for wx_template_msg_log
--- ----------------------------
-CREATE TABLE IF NOT EXISTS `wx_template_msg_log`  (
-  `log_id` bigint(11) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
-  `appid` char(36) NOT NULL COMMENT 'appid',
-  `touser` varchar(50) NULL DEFAULT NULL COMMENT '用户openid',
-  `template_id` varchar(50) NULL DEFAULT NULL COMMENT 'templateid',
-  `data` json NULL COMMENT '消息数据',
-  `url` varchar(255) NULL DEFAULT NULL COMMENT '消息链接',
-  `miniprogram` json NULL COMMENT '小程序信息',
-  `send_time` datetime(0) NULL DEFAULT NULL COMMENT '发送时间',
-  `send_result` varchar(255) NULL DEFAULT NULL COMMENT '发送结果',
-  INDEX `idx_template_log_appid`(`appid`)
-) ENGINE = InnoDB AUTO_INCREMENT = 116250 DEFAULT CHARACTER SET = utf8mb4 COMMENT = '微信模版消息发送记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for wx_user
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `wx_user`  (
-  `openid` varchar(50) NOT NULL PRIMARY KEY COMMENT '微信openid',
+  `openid` varchar(50) NOT NULL PRIMARY KEY COMMENT 'openid',
   `appid` char(36) NOT NULL COMMENT 'appid',
   `phone` char(11) NULL DEFAULT NULL COMMENT '手机号',
   `nickname` varchar(50) NULL DEFAULT NULL COMMENT '昵称',

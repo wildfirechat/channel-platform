@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 微信用户（粉丝）
+ * 用户（粉丝）
  */
 @RestController
 @RequestMapping("/wxUser")
 @RequiredArgsConstructor
-@Api(tags = {"微信粉丝"})
+@Api(tags = {"粉丝"})
 public class WxUserController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired

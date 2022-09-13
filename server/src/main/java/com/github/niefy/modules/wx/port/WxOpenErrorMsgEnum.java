@@ -678,9 +678,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_40131(40131, "out of limit of ticket"),
 
     /**
-     * 微信号不合法  invalid username
+     * 野火号不合法  invalid username
      */
-    CODE_40132(40132, "微信号不合法"),
+    CODE_40132(40132, "野火号不合法"),
 
     /**
      * invalid encryt data
@@ -1338,9 +1338,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_42006(42006, "component_access_token expired"),
 
     /**
-     * 用户修改微信密码， accesstoken 和 refreshtoken 失效，需要重新授权  access_token and refresh_token exception
+     * 用户修改密码， accesstoken 和 refreshtoken 失效，需要重新授权  access_token and refresh_token exception
      */
-    CODE_42007(42007, "用户修改微信密码， accesstoken 和 refreshtoken 失效，需要重新授权"),
+    CODE_42007(42007, "用户修改密码， accesstoken 和 refreshtoken 失效，需要重新授权"),
 
     /**
      * voip call key expired
@@ -1423,9 +1423,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_43014(43014, "require check agent"),
 
     /**
-     * require authorize by wechat team to use this function!
+     * require authorize by  team to use this function!
      */
-    CODE_43015(43015, "require authorize by wechat team to use this function!"),
+    CODE_43015(43015, "require authorize by  team to use this function!"),
 
     /**
      * 小程序未认证  require verify
@@ -2588,9 +2588,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_52000(52000, "pic is not from cdn"),
 
     /**
-     * wechat price is not less than origin price
+     *  price is not less than origin price
      */
-    CODE_52001(52001, "wechat price is not less than origin price"),
+    CODE_52001(52001, " price is not less than origin price"),
 
     /**
      * category/sku is wrong
@@ -2743,9 +2743,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_53017(53017, "公众号：小程序已有{名称  A+}时，需与该帐号相同主体才可申请{名称 A};小程序：公众号已有{名称 A+}时，需与该帐号相同主体才可申请{名称 A}"),
 
     /**
-     * 名称命中微信号  nickname hit alias
+     * 名称命中野火号  nickname hit alias
      */
-    CODE_53018(53018, "名称命中微信号"),
+    CODE_53018(53018, "名称命中野火号"),
 
     /**
      * 名称在保护期内  nickname protected by infringement
@@ -3098,9 +3098,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_61069(61069, "invalid admin"),
 
     /**
-     * name, idcard, wechat name not in accordance
+     * name, idcard,  name not in accordance
      */
-    CODE_61070(61070, "name, idcard, wechat name not in accordance"),
+    CODE_61070(61070, "name, idcard,  name not in accordance"),
 
     /**
      * invalid url
@@ -3408,9 +3408,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_61453(61453, "客服帐号已存在 (kf_account exsited)"),
 
     /**
-     * 客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的微信号 )(invalid  kf_acount  length)
+     * 客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的野火号 )(invalid  kf_acount  length)
      */
-    CODE_61454(61454, "客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的微信号 )(invalid  kf_acount  length)"),
+    CODE_61454(61454, "客服帐号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的野火号 )(invalid  kf_acount  length)"),
 
     /**
      * 客服帐号名包含非法字符 ( 仅允许英文 + 数字 )(illegal character in   kf_account)
@@ -3883,9 +3883,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_65401(65401, "invalid custom service account"),
 
     /**
-     * the custom service account need to bind a wechat user
+     * the custom service account need to bind a  user
      */
-    CODE_65402(65402, "the custom service account need to bind a wechat user"),
+    CODE_65402(65402, "the custom service account need to bind a  user"),
 
     /**
      * illegal nickname
@@ -3908,19 +3908,19 @@ public enum WxOpenErrorMsgEnum {
     CODE_65406(65406, "custom service account exists"),
 
     /**
-     * the wechat user have been one of your workers
+     * the  user have been one of your workers
      */
-    CODE_65407(65407, "the wechat user have been one of your workers"),
+    CODE_65407(65407, "the  user have been one of your workers"),
 
     /**
-     * you have already invited the wechat user
+     * you have already invited the  user
      */
-    CODE_65408(65408, "you have already invited the wechat user"),
+    CODE_65408(65408, "you have already invited the  user"),
 
     /**
-     * wechat account invalid
+     *  account invalid
      */
-    CODE_65409(65409, "wechat account invalid"),
+    CODE_65409(65409, " account invalid"),
 
     /**
      * too many custom service accounts bound by the worker
@@ -3933,9 +3933,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_65411(65411, "a effective invitation to bind the  custom service account exists"),
 
     /**
-     * the custom service account have been  bound by a wechat user
+     * the custom service account have been  bound by a  user
      */
-    CODE_65412(65412, "the custom service account have been  bound by a wechat user"),
+    CODE_65412(65412, "the custom service account have been  bound by a  user"),
 
     /**
      * no effective session for the customer
@@ -4153,9 +4153,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_68038(68038, "shipped but no fast mail info"),
 
     /**
-     * invalid wechat pay no
+     * invalid  pay no
      */
-    CODE_68039(68039, "invalid wechat pay no"),
+    CODE_68039(68039, "invalid  pay no"),
 
     /**
      * all product has been refunded, the  order can not be finished
@@ -4913,9 +4913,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_73214(73214, "the user is already a member"),
 
     /**
-     * 支付打通券能力已下线，请直接使用微信支付代金券API：https://pay.weixin.qq.com/wiki/doc/apiv3/wxpay/marketing/convention/chapter1_1.shtml
+     * 支付打通券能力已下线，请直接使用支付代金券API：https://pay.weixin.qq.com/wiki/doc/apiv3/wxpay/marketing/convention/chapter1_1.shtml
      */
-    CODE_73215(73215, "支付打通券能力已下线，请直接使用微信支付代金券API：https://pay.weixin.qq.com/wiki/doc/apiv3/wxpay/marketing/convention/chapter1_1.shtml"),
+    CODE_73215(73215, "支付打通券能力已下线，请直接使用支付代金券API：https://pay.weixin.qq.com/wiki/doc/apiv3/wxpay/marketing/convention/chapter1_1.shtml"),
 
     /**
      * 不合法的按钮名字，请从中选择一个:使用礼品卡/立即使用/去点外卖
@@ -5743,9 +5743,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_84006(84006, "name or id_card_number empty"),
 
     /**
-     * 微信号不存在或微信号设置为不可搜索  user not exist or user cannot be searched
+     * 野火号不存在或野火号设置为不可搜索  user not exist or user cannot be searched
      */
-    CODE_85001(85001, "微信号不存在或微信号设置为不可搜索"),
+    CODE_85001(85001, "野火号不存在或野火号设置为不可搜索"),
 
     /**
      * 小程序绑定的体验者数量达到上限  number of tester reach bind limit
@@ -5753,14 +5753,14 @@ public enum WxOpenErrorMsgEnum {
     CODE_85002(85002, "小程序绑定的体验者数量达到上限"),
 
     /**
-     * 微信号绑定的小程序体验者达到上限  user already bind too many weapps
+     * 野火号绑定的小程序体验者达到上限  user already bind too many weapps
      */
-    CODE_85003(85003, "微信号绑定的小程序体验者达到上限"),
+    CODE_85003(85003, "野火号绑定的小程序体验者达到上限"),
 
     /**
-     * 微信号已经绑定  user already bind
+     * 野火号已经绑定  user already bind
      */
-    CODE_85004(85004, "微信号已经绑定"),
+    CODE_85004(85004, "野火号已经绑定"),
 
     /**
      * appid not bind weapp
@@ -5873,9 +5873,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_85025(85025, "this phone reach bind limit"),
 
     /**
-     * this wechat account reach bind limit
+     * this  account reach bind limit
      */
-    CODE_85026(85026, "this wechat account reach bind limit"),
+    CODE_85026(85026, "this  account reach bind limit"),
 
     /**
      * this idcard reach bind limit
@@ -6238,14 +6238,14 @@ public enum WxOpenErrorMsgEnum {
     CODE_86003(86003, "component do not has category mall"),
 
     /**
-     * invalid wechat
+     * invalid 
      */
-    CODE_86004(86004, "invalid wechat"),
+    CODE_86004(86004, "invalid "),
 
     /**
-     * wechat limit frequency
+     *  limit frequency
      */
-    CODE_86005(86005, "wechat limit frequency"),
+    CODE_86005(86005, " limit frequency"),
 
     /**
      * has no quota to send group msg
@@ -6438,9 +6438,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_89001(89001, "not same contractor，Authorizer 与开放平台帐号主体不相同"),
 
     /**
-     * open not exists，该公众号/小程序未绑定微信开放平台帐号。  open not exists
+     * open not exists，该公众号/小程序未绑定开放平台帐号。  open not exists
      */
-    CODE_89002(89002, "open not exists，该公众号/小程序未绑定微信开放平台帐号。"),
+    CODE_89002(89002, "open not exists，该公众号/小程序未绑定开放平台帐号。"),
 
     /**
      * 该开放平台帐号并非通过 api 创建，不允许操作  open is not created by api
@@ -6878,9 +6878,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_91005(91005, "昵称 15 天主体保护"),
 
     /**
-     * 昵称命中微信号  nickname used by username
+     * 昵称命中野火号  nickname used by username
      */
-    CODE_91006(91006, "昵称命中微信号"),
+    CODE_91006(91006, "昵称命中野火号"),
 
     /**
      * 昵称已被占用  nickname used
@@ -7078,9 +7078,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_94001(94001, "missing cert_serialno"),
 
     /**
-     * use not register wechat pay
+     * use not register  pay
      */
-    CODE_94002(94002, "use not register wechat pay"),
+    CODE_94002(94002, "use not register  pay"),
 
     /**
      * invalid sign
@@ -7363,9 +7363,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_300029(300029, "主播昵称违规"),
 
     /**
-     * 主播微信号不合法
+     * 主播野火号不合法
      */
-    CODE_300030(300030, "主播微信号不合法"),
+    CODE_300030(300030, "主播野火号不合法"),
 
     /**
      * 直播间封面图不合规
@@ -7383,19 +7383,19 @@ public enum WxOpenErrorMsgEnum {
     CODE_300033(300033, "添加商品超过直播间上限"),
 
     /**
-     * 主播微信昵称长度不符合要求
+     * 主播昵称长度不符合要求
      */
-    CODE_300034(300034, "主播微信昵称长度不符合要求"),
+    CODE_300034(300034, "主播昵称长度不符合要求"),
 
     /**
-     * 主播微信号不存在
+     * 主播野火号不存在
      */
-    CODE_300035(300035, "主播微信号不存在"),
+    CODE_300035(300035, "主播野火号不存在"),
 
     /**
-     * 主播微信号未实名认证
+     * 主播野火号未实名认证
      */
-    CODE_300036(300036, "主播微信号未实名认证"),
+    CODE_300036(300036, "主播野火号未实名认证"),
 
     /**
      * invalid file name
@@ -8203,9 +8203,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_9207000(9207000, "boss error"),
 
     /**
-     * wechat pay error
+     *  pay error
      */
-    CODE_9207001(9207001, "wechat pay error"),
+    CODE_9207001(9207001, " pay error"),
 
     /**
      * boss param error
@@ -8763,9 +8763,9 @@ public enum WxOpenErrorMsgEnum {
     CODE_9300708(9300708, "wxpay overlimit"),
 
     /**
-     * 无效的微信号
+     * 无效的野火号
      */
-    CODE_9300801(9300801, "无效的微信号"),
+    CODE_9300801(9300801, "无效的野火号"),
 
     /**
      * 服务号未开通导购功能
@@ -8773,19 +8773,19 @@ public enum WxOpenErrorMsgEnum {
     CODE_9300802(9300802, "服务号未开通导购功能"),
 
     /**
-     * 微信号已经绑定为导购
+     * 野火号已经绑定为导购
      */
-    CODE_9300803(9300803, "微信号已经绑定为导购"),
+    CODE_9300803(9300803, "野火号已经绑定为导购"),
 
     /**
-     * 该微信号不是导购
+     * 该野火号不是导购
      */
-    CODE_9300804(9300804, "该微信号不是导购"),
+    CODE_9300804(9300804, "该野火号不是导购"),
 
     /**
-     * 微信号已经被其他账号绑定为导购
+     * 野火号已经被其他账号绑定为导购
      */
-    CODE_9300805(9300805, "微信号已经被其他账号绑定为导购"),
+    CODE_9300805(9300805, "野火号已经被其他账号绑定为导购"),
 
     /**
      * 粉丝和导购不存在绑定关系
@@ -9138,14 +9138,14 @@ public enum WxOpenErrorMsgEnum {
     CODE_9403002(9403002, "消息字段的内容违规!"),
 
     /**
-     * 发送的微信号太多!
+     * 发送的野火号太多!
      */
-    CODE_9403003(9403003, "发送的微信号太多!"),
+    CODE_9403003(9403003, "发送的野火号太多!"),
 
     /**
-     * 存在错误的微信号!
+     * 存在错误的野火号!
      */
-    CODE_9403004(9403004, "存在错误的微信号!"),
+    CODE_9403004(9403004, "存在错误的野火号!"),
 
     /**
      * 直播间列表为空  live room not exsits

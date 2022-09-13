@@ -19,7 +19,7 @@ public class WxConsts {
             WxMpErrorMsgEnum.CODE_40014.getCode(), WxMpErrorMsgEnum.CODE_42001.getCode());
 
     /**
-     * 微信推送过来的消息的类型，和发送给微信xml格式消息的消息类型.
+     * 推送过来的消息的类型，和发送给xml格式消息的消息类型.
      */
     public static class XmlMsgType {
         public static final String TEXT = "text";
@@ -176,7 +176,7 @@ public class WxConsts {
     }
 
     /**
-     * 企业微信模板卡片消息的卡片类型
+     * 企业模板卡片消息的卡片类型
      */
     public static class TemplateCardType {
         /**
@@ -221,7 +221,7 @@ public class WxConsts {
     }
 
     /**
-     * 群发消息后微信端推送给服务器的反馈消息.
+     * 群发消息后端推送给服务器的反馈消息.
      */
     public static class MassMsgStatus {
         public static final String SEND_SUCCESS = "send success";
@@ -268,7 +268,7 @@ public class WxConsts {
     }
 
     /**
-     * 微信端推送过来的事件类型.
+     * 端推送过来的事件类型.
      */
     public static class EventType {
         public static final String SUBSCRIBE = "subscribe";
@@ -295,7 +295,7 @@ public class WxConsts {
          */
         public static final String PIC_PHOTO_OR_ALBUM = "pic_photo_or_album";
         /**
-         * 弹出微信相册发图器的事件推送.
+         * 弹出相册发图器的事件推送.
          */
         public static final String PIC_WEIXIN = "pic_weixin";
         /**
@@ -305,7 +305,7 @@ public class WxConsts {
 
         public static final String TEMPLATE_SEND_JOB_FINISH = "TEMPLATESENDJOBFINISH";
         /**
-         * 微信小店 订单付款通知.
+         * 小店 订单付款通知.
          */
         public static final String MERCHANT_ORDER = "merchant_order";
 
@@ -341,7 +341,7 @@ public class WxConsts {
 
 
         /**
-         * 卡券事件：用户通过卡券的微信买单完成时推送
+         * 卡券事件：用户通过卡券的买单完成时推送
          */
         public static final String CARD_USER_PAY_FROM_PAY_CELL = "user_pay_from_pay_cell";
 
@@ -442,7 +442,7 @@ public class WxConsts {
          */
         public static final String PIC_PHOTO_OR_ALBUM = "pic_photo_or_album";
         /**
-         * 弹出微信相册发图器.
+         * 弹出相册发图器.
          */
         public static final String PIC_WEIXIN = "pic_weixin";
         /**
@@ -474,7 +474,7 @@ public class WxConsts {
         public static final String SNSAPI_USERINFO = "snsapi_userinfo";
 
         /**
-         * 手动授权,可获取成员的详细信息,包含手机、邮箱。只适用于企业微信或企业号.
+         * 手动授权,可获取成员的详细信息,包含手机、邮箱。只适用于企业或企业号.
          */
         public static final String SNSAPI_PRIVATEINFO = "snsapi_privateinfo";
     }
