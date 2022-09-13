@@ -13,7 +13,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 CREATE TABLE IF NOT EXISTS `cms_article`  (
   `id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `type` tinyint(1) NULL DEFAULT 1 COMMENT '文章类型[1:普通文章,5:帮助中心]',
-  `title` varchar(1024) NOT NULL COMMENT '标题',
+  `title` varchar(128) NOT NULL COMMENT '标题',
   `summary` varchar(1024) NULL DEFAULT NULL COMMENT '文章摘要',
   `tags` varchar(255) NULL DEFAULT NULL COMMENT '文章标签',
   `content` longtext NULL COMMENT '内容',
