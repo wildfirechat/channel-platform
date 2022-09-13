@@ -18,17 +18,15 @@
                 <el-button @click="showSendMsgDialog = true">发送消息</el-button>
             </el-form-item>
         </el-form>
-        <div class="text-gray">
-            24小时内消息可回复。此后台展示消息有一分钟左右延迟，如需畅聊请使用
-            <a href="https://mpkf.weixin.qq.com/" target="_blank">公众平台客服</a>
-        </div>
         <div v-loading="dataListLoading">
             <div class="msg-item" v-for="(msg,index) in  dataList" :key="index">
-                <div class="avatar"><el-avatar shape="square" :size="60" :src="getUserInfo(msg.openid).headimgurl"></el-avatar></div>
+                <div class="avatar">
+                    <el-avatar shape="square" :size="60" :src="getUserInfo(msg.openid).headimgurl"></el-avatar>
+                </div>
                 <div class="item-content">
                     <div class="flex justify-between margin-bottom">
-                        <div class="text-cut">{{getUserInfo(msg.openid).nickname || '--'}}</div>
-                        <div>{{$moment(msg.createTime).calendar()}}</div>
+                        <div class="text-cut">{{ getUserInfo(msg.openid).nickname || '--' }}</div>
+                        <div>{{ $moment(msg.createTime).calendar() }}</div>
                         <div class="reply-btn">
                             <div v-if="canReply(msg.createTime)" @click="replyHandle(msg.openid)" class="el-icon-s-promotion">回复</div>
                         </div>
@@ -64,8 +62,8 @@ const TIME_FORMAT = 'YYYY/MM/DD hh:mm:ss'
 export default {
     data() {
         return {
-            timeSelections:{
-                '近24小时':this.$moment().subtract(1, 'days').format(TIME_FORMAT),
+            timeSelections: {
+                '近24小时': this.$moment().subtract(1, 'days').format(TIME_FORMAT),
                 '近3天': this.$moment().subtract(3, 'days').format(TIME_FORMAT),
                 '近7天': this.$moment().subtract(7, 'days').format(TIME_FORMAT),
                 '近30天': this.$moment().subtract(30, 'days').format(TIME_FORMAT),
@@ -81,7 +79,7 @@ export default {
                 ]
             },
             dataList: [],
-            userDataList:[],
+            userDataList: [],
             pageIndex: 1,
             pageSize: 20,
             totalCount: 0,
@@ -91,8 +89,8 @@ export default {
         }
     },
     components: {
-        WxMsgReply:()=>import('./wx-msg-reply'),
-        WxMsgPreview:()=>import('@/components/wx-msg-preview')
+        WxMsgReply: () => import('./wx-msg-reply'),
+        WxMsgPreview: () => import('@/components/wx-msg-preview')
     },
     activated() {
         this.getDataList()
@@ -111,11 +109,11 @@ export default {
                     'page': this.pageIndex,
                     'limit': this.pageSize,
                     'msgTypes': this.dataForm.msgTypes,
-                    'startTime':this.dataForm.startTime,
+                    'startTime': this.dataForm.startTime,
                     'sidx': 'create_time',
                     'order': 'desc'
                 })
-            }).then(({ data }) => {
+            }).then(({data}) => {
                 if (data && data.code === 200) {
                     this.dataList = data.page.list
                     this.totalCount = data.page.totalCount
@@ -127,25 +125,25 @@ export default {
                 this.dataListLoading = false
             })
         },
-        refreshUserList(msgList){
-            let openidList=msgList.map(msg=>msg.openid).filter(openid=>!this.userDataList.some(u=>u.openid==openid))
-            if(!openidList.length)return
+        refreshUserList(msgList) {
+            let openidList = msgList.map(msg => msg.openid).filter(openid => !this.userDataList.some(u => u.openid == openid))
+            if (!openidList.length) return
             openidList = Array.from(new Set(openidList))//去重
             this.$http({
                 url: this.$http.adornUrl('/manage/wxUser/listByIds'),
                 method: 'post',
-                data: this.$http.adornParams(openidList,false)
-            }).then(({ data }) => {
+                data: this.$http.adornParams(openidList, false)
+            }).then(({data}) => {
                 if (data && data.code === 200) {
                     this.userDataList = this.userDataList.concat(data.data)
                 }
             })
         },
-        getUserInfo(openid){
-            return this.userDataList.find(u=>u.openid==openid) || {nickname:'--',headimgurl:''}
+        getUserInfo(openid) {
+            return this.userDataList.find(u => u.openid == openid) || {nickname: '--', headimgurl: ''}
         },
         // 是否可回复，24小时内可回复
-        canReply(time){
+        canReply(time) {
             return true
         },
         // 每页数
@@ -169,15 +167,15 @@ export default {
                 this.$refs.wxMsgReply.init(openid)
             })
         },
-        onReplyed(replyMsg){
+        onReplyed(replyMsg) {
             this.dataList.unshift({
-                openid : replyMsg.openid,
-                msgType : replyMsg.replyType,
-                detail : {
-                    content : replyMsg.replyContent
+                openid: replyMsg.openid,
+                msgType: replyMsg.replyType,
+                detail: {
+                    content: replyMsg.replyContent
                 },
-                inOut : 1,
-                createTime : new Date()
+                inOut: 1,
+                createTime: new Date()
             })
         },
         sendTextMessageContent() {
@@ -207,7 +205,7 @@ export default {
 }
 </script>
 <style scoped>
-.msg-item{
+.msg-item {
     border: 1px solid #DCDFE6;
     display: flex;
     justify-content: flex-start;
@@ -215,19 +213,19 @@ export default {
     margin-top: 20px;
     padding: 10px 20px;
 }
-.avatar{
+.avatar {
     flex: 0;
     display: inline-block;
     min-width: 60px;
     margin-right: 20px;
 }
-.item-content{
+.item-content {
     flex: 1;
     line-height: 20px;
     max-width: 100%;
     overflow: hidden;
 }
-.reply-btn{
+.reply-btn {
     width: 50px;
 }
 </style>

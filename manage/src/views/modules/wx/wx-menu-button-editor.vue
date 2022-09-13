@@ -20,14 +20,14 @@
                         <option value="view">跳转网页(view)</option>
                         <option value="media_id">发送消息(media_id)</option>
                         <!--<option value="view_limited">跳转公众号图文消息链接(view_limited)</option>-->
-                        <option value="miniprogram">打开指定小程序(miniprogram)</option>
+<!--                        <option value="miniprogram">打开指定小程序(miniprogram)</option>-->
                         <option value="click">自定义点击事件(click)</option>
-                        <option value="scancode_push">扫码上传消息(scancode_push)</option>
-                        <option value="scancode_waitmsg">扫码提示下发(scancode_waitmsg)</option>
-                        <option value="pic_sysphoto">系统相机拍照(pic_sysphoto)</option>
-                        <option value="pic_photo_or_album">弹出拍照或者相册(pic_photo_or_album)</option>
-                        <option value="pic_weixin">弹出频道相册(pic_weixin)</option>
-                        <option value="location_select">弹出地理位置选择器(location_select)</option>
+<!--                        <option value="scancode_push">扫码上传消息(scancode_push)</option>-->
+<!--                        <option value="scancode_waitmsg">扫码提示下发(scancode_waitmsg)</option>-->
+<!--                        <option value="pic_sysphoto">系统相机拍照(pic_sysphoto)</option>-->
+<!--                        <option value="pic_photo_or_album">弹出拍照或者相册(pic_photo_or_album)</option>-->
+<!--                        <option value="pic_weixin">弹出频道相册(pic_weixin)</option>-->
+<!--                        <option value="location_select">弹出地理位置选择器(location_select)</option>-->
                     </select>
                 </div>
             </div>

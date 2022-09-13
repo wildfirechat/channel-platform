@@ -41,7 +41,7 @@ import { mapState } from 'vuex'
         },
         dataRule: {
           name: [
-            { required: true, message: '公众号名称不能为空', trigger: 'blur' }
+            { required: true, message: '频道名称不能为空', trigger: 'blur' }
           ],
           appid: [
             { required: true, message: 'appid不能为空', trigger: 'blur' }
