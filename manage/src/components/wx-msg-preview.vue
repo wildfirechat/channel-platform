@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-        <el-tooltip class="item" effect="dark" :content="msg.inOut?'公众号发出的消息':'来自用户的消息'" placement="right">
+        <el-tooltip class="item" effect="dark" :content="msg.inOut?'频道发出的消息':'来自用户的消息'" placement="right">
             <el-tag size="mini" v-if="msg.inOut" class="margin-right el-icon-upload2"  type="info"></el-tag>
             <el-tag size="mini" v-else class="margin-right el-icon-download"></el-tag>
         </el-tooltip>

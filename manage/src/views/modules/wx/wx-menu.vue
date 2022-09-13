@@ -4,7 +4,7 @@
             <!-- 预览窗 -->
             <div class="weixin-preview">
                 <div class="weixin-bd">
-                    <div class="weixin-header">公众号菜单</div>
+                    <div class="weixin-header">频道菜单</div>
                     <ul class="weixin-menu" id="weixin-menu">
                         <li v-for="(btn,i) in menu.buttons" :key="i" class="menu-item" :class="{'current':selectedMenuIndex===i&&selectedMenuLevel==1}" @click="selectMenu(i)">
                             <div class="menu-item-title">

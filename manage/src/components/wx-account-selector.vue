@@ -29,7 +29,7 @@ export default {
                 if (data && data.code === 200) {
                     this.$store.commit('wxAccount/updateAccountList', data.list)
                     if(!data.list.length){
-                        this.$message.warning("公众号列表为空，请先到频道管理 - 公众号账号页面添加公众号")
+                        this.$message.warning("频道列表为空，请先到频道管理 - 频道账号页面添加频道")
                     }
                 }
                 this.dataListLoading = false

@@ -1,5 +1,5 @@
 <template>
-    <el-dialog title="公众号用户标签管理" :close-on-click-modal="false" :visible.sync="dialogVisible">
+    <el-dialog title="频道用户标签管理" :close-on-click-modal="false" :visible.sync="dialogVisible">
         <div class="panel  flex flex-wrap" v-loading="submitting">
             <el-tag v-for="tag in wxUserTags" closable @click="editTag(tag.id,tag.name)" @close="deleteTag(tag.id)" :disable-transitions="false" :key="tag.id">
                 {{tag.id}} {{tag.name}}

@@ -1,7 +1,7 @@
 <template>
     <el-dialog title="开发接入信息" :close-on-click-modal="false" :visible.sync="visible">
         <div>
-            <div class="list-item"><span class="label">公众号:</span>{{account.name}}</div>
+            <div class="list-item"><span class="label">频道:</span>{{account.name}}</div>
             <div class="list-item"><span class="label">token:</span>{{account.token}}</div>
             <div class="list-item"><span class="label">aesKey:</span>{{account.aesKey}}</div>
             <div class="list-item">

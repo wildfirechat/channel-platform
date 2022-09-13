@@ -15,7 +15,7 @@
             </el-table-column>
             <el-table-column prop="appid" header-align="center" align="center" label="appid">
             </el-table-column>
-            <el-table-column prop="name" header-align="center" align="center" label="公众号名称">
+            <el-table-column prop="name" header-align="center" align="center" label="频道名称">
             </el-table-column>
             <el-table-column prop="type" header-align="center" align="center" label="类型" :formatter="accountTypeFormat">
             </el-table-column>

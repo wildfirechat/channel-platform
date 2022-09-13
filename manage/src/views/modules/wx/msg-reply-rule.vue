@@ -15,7 +15,7 @@
                 <template slot-scope="props">
                     <el-form label-position="left" inline class="demo-table-expand">
                         <el-form-item label="作用范围">
-                            <span>{{ props.row.appid?'当前公众号':'全部公众号' }}</span>
+                            <span>{{ props.row.appid?'当前频道':'全部频道' }}</span>
                         </el-form-item>
                         <el-form-item label="精确匹配">
                             <span>{{ props.row.exactMatch?'是':'否' }}</span>

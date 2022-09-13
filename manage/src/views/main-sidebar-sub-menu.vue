@@ -41,7 +41,7 @@ export default {
         // 通过menuId与动态(菜单)路由进行匹配跳转至指定路由
         gotoRouteHandle(menu) {
             if (!this.selectedAppid && menu.url !=='wx/wx-account'){
-                this.$message.warning("公众号列表为空，请先到公众号账号界面添加公众号")
+                this.$message.warning("频道列表为空，请先到频道账号界面添加频道")
                 return;
             }
             var route = this.dynamicMenuRoutes.filter(item => item.meta.menuId === menu.menuId)

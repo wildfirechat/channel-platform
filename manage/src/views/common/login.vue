@@ -4,7 +4,7 @@
             <div class="site-content">
                 <div class="brand-info">
                     <h2 class="brand-info__text">频道后台管理系统</h2>
-                    <p class="brand-info__intro">频道公众号后台管理系统。</p>
+                    <p class="brand-info__intro">频道频道后台管理系统。</p>
                 </div>
                 <div class="login-main">
                     <h3 class="login-title">管理员登录</h3>
