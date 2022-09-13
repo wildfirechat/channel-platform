@@ -17,6 +17,7 @@
 
 <script>
 import SubMenu from './main-sidebar-sub-menu'
+import {mapState} from "vuex";
 export default {
     name: 'sub-menu',
     props: {
@@ -32,14 +33,17 @@ export default {
     components: {
         SubMenu
     },
-    computed: {
-        sidebarLayoutSkin: {
-            get() { return this.$store.state.common.sidebarLayoutSkin }
-        }
-    },
+    computed: mapState({
+        sidebarLayoutSkin: state=>state.common.sidebarLayoutSkin,
+        selectedAppid:state=>state.wxAccount.selectedAppid
+    }),
     methods: {
         // 通过menuId与动态(菜单)路由进行匹配跳转至指定路由
         gotoRouteHandle(menu) {
+            if (!this.selectedAppid && menu.url !=='wx/wx-account'){
+                this.$message.warning("公众号列表为空，请先到公众号账号界面添加公众号")
+                return;
+            }
             var route = this.dynamicMenuRoutes.filter(item => item.meta.menuId === menu.menuId)
             if (route.length >= 1) {
                 this.$router.push({ name: route[0].name })
