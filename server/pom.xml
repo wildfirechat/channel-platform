@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.wildfirechat</groupId>
 	<artifactId>channel-api</artifactId>
-	<version>0.8.2</version>
+	<version>0.9.0</version>
 	<packaging>jar</packaging>
 	<description>channel-api</description>
 
