@@ -9,7 +9,7 @@
       <el-input v-model="dataForm.name" placeholder="频道名称"></el-input>
     </el-form-item>
     <el-form-item label="imurl" prop="imurl">
-      <el-input v-model="dataForm.imurl" placeholder="IM服务地址"></el-input>
+      <el-input v-model="dataForm.imurl" placeholder="IM服务地址(频道使用的是80端口，不是18080端口)"></el-input>
     </el-form-item>
     <el-form-item label="appid" prop="appid">
       <el-input v-model="dataForm.appid" placeholder="appid" maxlength="36"></el-input>
