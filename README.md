@@ -52,5 +52,27 @@ java -jar channel-server-0.1.0.jar
 ## 前后端分离
 默认编译```client```和```manage```会把前端页面放到```server```的```static```目录。也可以前后端分离部署，把前端页面单独部署。
 
+## 截图
+菜单
+![menu](assets/menu.png)
+
+自动回复
+![auto reply](assets/auto_reply.png)
+
+私聊
+![message](assets/message.png)
+
+粉丝管理
+![subscribers](assets/subscribers.png)
+
+文章管理
+![articles](assets/articles.png)
+
+频道账户
+![channel](assets/channel_account.png)
+
+系统管理
+![manage](assets/manage.png)
+
 ## 项目来源
 项目Base于[wx-api](https://github.com/niefy/wx-api)。
