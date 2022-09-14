@@ -28,15 +28,15 @@ npm run build
 ```shell
 mvn clean package
 ```
-生产软件包```channel-api.jar```在```target```目录下。
+生产软件包```channel-server-0.1.0.jar```在```target```目录下。
 
 ## 配置
 默认使用h2db，可以不用修改配置直接运行。如果要是想使用mysql，需要修改 ```server/config/application-{dev|prod}.yml```文件，按照说明配置。
 
 ## 运行
-服务器安装有jdk1.8。把```server/config```目录拷贝到```channel-api.jar```同目录，然后执行下面语句：
+服务器安装有jdk1.8。把```server/config```目录拷贝到```channel-server-0.1.0.jar```同目录，然后执行下面语句：
 ```shell
-java -jar channel-api.jar
+java -jar channel-server-0.1.0.jar
 ```
 
 ## 登录

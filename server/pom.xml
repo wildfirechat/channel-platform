@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.wildfirechat</groupId>
-	<artifactId>channel-api</artifactId>
-	<version>0.9.0</version>
+	<artifactId>channel-server</artifactId>
+	<version>0.1.0</version>
 	<packaging>jar</packaging>
-	<description>channel-api</description>
+	<description>channel-server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -172,7 +172,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
