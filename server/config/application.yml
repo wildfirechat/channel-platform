@@ -12,8 +12,22 @@ server:
 debug: false
 
 spring:
-    profiles:
-        active: ${PROFILE_ACTIVE:dev} #此处由maven的环境选择决定，参考：https://www.jianshu.com/p/b7c75b0c364c
+## 开发时使用h2db数据库，上线时需要切换到mysql。切换时把下面mysql相关的datasource打开，注释掉h2相关的datasource全部注释掉（包括password下面的几行）。切换到mysql需要手动创建数据库，然后执行resource目录下的sql语句。
+#    datasource:
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://${MYSQL_IP:localhost}:${MYSQL_PORT:3306}/wx?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#        username: ${MYSQL_USERNAME:root}
+#        password: ${MYSQL_PASSWORD:123456}
+
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:file:./channel_server;AUTO_SERVER=TRUE;MODE=MySQL
+        username: sa
+        password:
+        initialization-mode: always
+        data: classpath:sql/data.sql
+        continue-on-error: true
+
     # jackson时间格式化
     jackson:
         time-zone: GMT+8
@@ -63,7 +77,7 @@ renren:
         expire: 604800
         header: token
 
-wx:
-    mp:
-        # 自动回复消息发送间隔（毫秒），适当增加间隔可提升用户体验
-        autoReplyInterval: 1000
+springfox:
+    documentation:
+        swagger-ui:
+            enabled: false

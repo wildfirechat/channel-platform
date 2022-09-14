@@ -39,8 +39,6 @@ public class MsgReplyServiceImpl implements MsgReplyService {
     MsgReplyRuleService msgReplyRuleService;
     @Autowired
     WxMpService wxMpService;
-    @Value("${wx.mp.autoReplyInterval:1000}")
-    Long autoReplyInterval;
     @Autowired
     WxMsgService wxMsgService;
     @Autowired
@@ -72,7 +70,7 @@ public class MsgReplyServiceImpl implements MsgReplyService {
                 TaskExcutor.schedule(() -> {
                     this.reply(appid, toUser,rule.getReplyType(),rule.getReplyContent());
                 }, delay, TimeUnit.MILLISECONDS);
-                delay += autoReplyInterval;
+                delay += 100;
             }
             return true;
         } catch (Exception e) {
