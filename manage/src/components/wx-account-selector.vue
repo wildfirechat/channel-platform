@@ -1,5 +1,5 @@
 <template>
-    <el-select v-model="selectedAppid" size="small" v-loading="dataListLoading"  @change="selectAccount" filterable>
+    <el-select :value.sync="selectedAppid" size="small" v-loading="dataListLoading"  @change="selectAccount" filterable>
         <el-option v-for="item in accountList" :key="item.appid" :label="item.name+'（'+ACCOUNT_TYPES[item.type]+'）'" :value="item.appid"></el-option>
     </el-select>
 </template>

@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequiredArgsConstructor
 @RestController
-@Api(tags = {"消息 - 腾讯会调用"})
+@Api(tags = {"消息 - 野火会调用"})
 public class WxMpPortalController {
 //    private final WxMpService wxService;
 //    private final WxMpMessageRouter messageRouter;

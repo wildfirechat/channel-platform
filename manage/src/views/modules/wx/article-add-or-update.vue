@@ -90,6 +90,12 @@ export default {
                 ],
                 category: [
                     { required: true, message: "分类不能为空", trigger: "blur" }
+                ],
+                summary: [
+                    { required: true, message: "摘要不能为空", trigger: "blur" }
+                ],
+                image: [
+                    { required: true, message: "封面不能为空", trigger: "blur" }
                 ]
             }
         };
