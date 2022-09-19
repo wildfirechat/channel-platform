@@ -24,7 +24,7 @@
                 <el-table-column prop="type" header-align="center" align="center" :formatter="articleTypeFormat" label="文章类型">
                 </el-table-column>
                 <el-table-column prop="title" header-align="center" align="center" show-overflow-tooltip label="标题">
-                    <a :href="scope.row.targetLink" slot-scope="scope">{{scope.row.title}}</a>
+                    <a target="_blank" :href="scope.row.targetLink" slot-scope="scope">{{scope.row.title}}</a>
                 </el-table-column>
                 <el-table-column prop="category" header-align="center" align="center" label="一级分类">
                 </el-table-column>

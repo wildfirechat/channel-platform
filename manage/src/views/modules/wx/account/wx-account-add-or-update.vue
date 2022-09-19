@@ -3,7 +3,7 @@
     title="新增/修改"
     :close-on-click-modal="false"
     :visible.sync="visible">
-    <div class="padding text-gray">请先到野火开放平台创建频道，<a href="https://github.com/wildfirechat/open-platform">开发平台项目</a></div>
+    <div class="padding text-gray">请先到野火开放平台创建频道，<a target="_blank" href="https://github.com/wildfirechat/open-platform">开发平台项目</a></div>
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="100px">
       <el-form-item label="频道名称" prop="name">
       <el-input v-model="dataForm.name" placeholder="频道名称"></el-input>
