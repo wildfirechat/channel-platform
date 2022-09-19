@@ -57,6 +57,7 @@ public class WxUser implements Serializable {
         this.subscribe = true;
         this.nickname = userInfo.getDisplayName();
         this.headimgurl = userInfo.getPortrait();
+        this.subscribeTime = new Date();
     }
 
     public WxUser(WxMpUser wxMpUser, String appid) {

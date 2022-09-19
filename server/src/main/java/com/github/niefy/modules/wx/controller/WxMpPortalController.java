@@ -52,7 +52,9 @@ public class WxMpPortalController {
                 this.logger.debug("\n忽略类型91的消息");
                 return "ok";
             }
-            wxMsgService.addWxMsg(new WxMsg(event, true));
+            if (event.getPayload().getPersistFlag() == 1 || event.getPayload().getPersistFlag() == 3 || event.getPayload().getType() == 73){
+                wxMsgService.addWxMsg(new WxMsg(event, true));
+            }
         } catch (Exception e) {
             this.logger.error("记录消息异常",e);
         }

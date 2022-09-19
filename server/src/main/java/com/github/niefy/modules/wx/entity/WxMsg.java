@@ -11,10 +11,11 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * 消息
- * 
+ *
  * @author niefy
  * @date 2020-05-14 17:28:34
  */
@@ -113,6 +114,9 @@ public class WxMsg implements Serializable {
 			this.msgType = WxConsts.XmlMsgType.NEWS;
 		} else if (messageData.getPayload().getType() == 73) {
 			this.msgType = WxConsts.XmlMsgType.EVENT;
+            String content = messageData.getPayload().getContent();
+            Map<String, Object> obj = (Map<String, Object>) JSONObject.parse(content);
+            this.detail.put("eventKey", obj.get("name"));
 		} else {
 			this.msgType = WxConsts.XmlMsgType.TEXT;
 		}

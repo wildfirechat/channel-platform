@@ -27,7 +27,7 @@
                     <div class="flex justify-between margin-bottom">
                         <div class="text-cut">{{ getUserInfo(msg.openid).nickname || '--' }}</div>
                         <div>{{ $moment(msg.createTime).calendar() }}</div>
-                        <div class="reply-btn">
+                        <div v-if="msg.msgType === 'text' && msg.inOut === 0" class="reply-btn">
                             <div v-if="canReply(msg.createTime)" @click="replyHandle(msg.openid)" class="el-icon-s-promotion">回复</div>
                         </div>
                     </div>

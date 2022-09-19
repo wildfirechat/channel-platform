@@ -8,7 +8,7 @@
             <span v-if="msg.msgType=='text'" v-html="msg.detail.content"></span>
             <span v-else-if="msg.msgType=='event'" >
                 <el-tag size="mini" type="warning" effect="plain">事件</el-tag>
-                <el-tag size="mini" type="info" effect="plain">{{msg.detail.event}}</el-tag>
+                <el-tag v-if="false" size="mini" type="info" effect="plain">{{msg.detail.event}}</el-tag>
                 {{msg.detail.eventKey}}
             </span>
             <span v-else-if="msg.msgType=='transfer_customer_service'">
