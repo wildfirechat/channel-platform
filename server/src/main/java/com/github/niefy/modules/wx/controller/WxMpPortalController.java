@@ -45,13 +45,6 @@ public class WxMpPortalController {
     @ApiOperation(value = "各类消息",notes = "公众号接入开发模式后才有效")
     public String post(@PathVariable String appid,
                        @RequestBody OutputMessageData event) {
-//		logger.debug("\n接收请求：[openid=[{}], [signature=[{}], encType=[{}], msgSignature=[{}],"
-//						+ " timestamp=[{}], nonce=[{}], requestBody=[\n{}\n] ",
-//				openid, signature, encType, msgSignature, timestamp, nonce, requestBody);
-//        this.wxService.switchoverTo(appid);
-//        if (!wxService.checkSignature(timestamp, nonce, signature)) {
-//            throw new IllegalArgumentException("非法请求，可能属于伪造的请求！");
-//        }
 
         try {
             this.logger.debug("\n接收到请求消息，内容：{}", Json.toJsonString(event));
