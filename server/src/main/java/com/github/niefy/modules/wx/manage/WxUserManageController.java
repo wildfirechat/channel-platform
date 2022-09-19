@@ -35,7 +35,7 @@ public class WxUserManageController {
     @GetMapping("/list")
     @RequiresPermissions("wx:wxuser:list")
     @ApiOperation(value = "列表")
-    public R list(@CookieValue String appid,@RequestParam Map<String, Object> params) {
+    public R list(@RequestHeader String appid,@RequestParam Map<String, Object> params) {
         params.put("appid",appid);
         PageUtils page = new PageUtils(userService.queryPage(params));
 
@@ -48,7 +48,7 @@ public class WxUserManageController {
     @PostMapping("/listByIds")
     @RequiresPermissions("wx:wxuser:list")
     @ApiOperation(value = "列表-ID查询")
-    public R listByIds(@CookieValue String appid,@RequestBody String[] openids){
+    public R listByIds(@RequestHeader String appid,@RequestBody String[] openids){
         List<WxUser> users = userService.listByIds(Arrays.asList(openids));
         return R.ok().put(users);
     }
@@ -60,7 +60,7 @@ public class WxUserManageController {
     @GetMapping("/info/{openid}")
     @RequiresPermissions("wx:wxuser:info")
     @ApiOperation(value = "详情")
-    public R info(@CookieValue String appid,@PathVariable("openid") String openid) {
+    public R info(@RequestHeader String appid,@PathVariable("openid") String openid) {
         WxUser wxUser = userService.getById(openid);
 
         return R.ok().put("wxUser", wxUser);
@@ -72,7 +72,7 @@ public class WxUserManageController {
     @PostMapping("/syncWxUsers")
     @RequiresPermissions("wx:wxuser:save")
     @ApiOperation(value = "同步用户列表到数据库")
-    public R syncWxUsers(@CookieValue String appid) {
+    public R syncWxUsers(@RequestHeader String appid) {
         userService.syncWxUsers(appid);
 
         return R.ok("任务已建立");
@@ -86,7 +86,7 @@ public class WxUserManageController {
     @PostMapping("/delete")
     @RequiresPermissions("wx:wxuser:delete")
     @ApiOperation(value = "删除")
-    public R delete(@CookieValue String appid,@RequestBody String[] ids) {
+    public R delete(@RequestHeader String appid,@RequestBody String[] ids) {
         userService.removeByIds(Arrays.asList(ids));
 
         return R.ok();

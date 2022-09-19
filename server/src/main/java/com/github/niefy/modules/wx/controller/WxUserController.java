@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户（粉丝）
@@ -29,7 +26,7 @@ public class WxUserController {
 
     @GetMapping("/getUserInfo")
     @ApiOperation(value = "获取粉丝信息")
-    public R getUserInfo(@CookieValue String appid,@CookieValue String openid){
+    public R getUserInfo(@RequestHeader String appid, @RequestHeader String openid){
         WxUser wxUser = wxUserService.getById(openid);
         return R.ok().put(wxUser);
     }

@@ -33,7 +33,7 @@ public class WxUserTagsManageController {
     @GetMapping("/list")
     @RequiresPermissions("wx:wxuser:info")
     @ApiOperation(value = "列表")
-    public R list(@CookieValue String appid) throws WxErrorException {
+    public R list(@RequestHeader String appid) throws WxErrorException {
         List<WxUserTag> wxUserTags =  wxUserTagsService.getWxTags(appid);
         return R.ok().put("list",wxUserTags);
     }
@@ -44,7 +44,7 @@ public class WxUserTagsManageController {
     @PostMapping("/save")
     @RequiresPermissions("wx:wxuser:save")
     @ApiOperation(value = "保存")
-    public R save(@CookieValue String appid,@RequestBody WxUserTagForm form) throws WxErrorException{
+    public R save(@RequestHeader String appid,@RequestBody WxUserTagForm form) throws WxErrorException{
         Long tagid = form.getId();
         if(tagid==null || tagid<=0){
             wxUserTagsService.creatTag(appid,form.getName());
@@ -60,7 +60,7 @@ public class WxUserTagsManageController {
     @PostMapping("/delete/{tagid}")
     @RequiresPermissions("wx:wxuser:save")
     @ApiOperation(value = "删除标签")
-    public R delete(@CookieValue String appid,@PathVariable("tagid") Long tagid) throws WxErrorException{
+    public R delete(@RequestHeader String appid,@PathVariable("tagid") Long tagid) throws WxErrorException{
         if(tagid==null || tagid<=0){
             return R.error("标签ID不得为空");
         }
@@ -74,7 +74,7 @@ public class WxUserTagsManageController {
     @PostMapping("/batchTagging")
     @RequiresPermissions("wx:wxuser:save")
     @ApiOperation(value = "批量给用户打标签")
-    public R batchTagging(@CookieValue String appid,@RequestBody WxUserBatchTaggingForm form) throws WxErrorException{
+    public R batchTagging(@RequestHeader String appid,@RequestBody WxUserBatchTaggingForm form) throws WxErrorException{
 
         wxUserTagsService.batchTagging(appid,form.getTagid(),form.getOpenidList());
         return R.ok();
@@ -85,7 +85,7 @@ public class WxUserTagsManageController {
     @PostMapping("/batchUnTagging")
     @RequiresPermissions("wx:wxuser:save")
     @ApiOperation(value = "批量移除用户标签")
-    public R batchUnTagging(@CookieValue String appid,@RequestBody WxUserBatchTaggingForm form) throws WxErrorException{
+    public R batchUnTagging(@RequestHeader String appid,@RequestBody WxUserBatchTaggingForm form) throws WxErrorException{
         wxUserTagsService.batchUnTagging(appid,form.getTagid(),form.getOpenidList());
         return R.ok();
     }

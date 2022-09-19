@@ -45,7 +45,7 @@ public class WxMenuManageController {
      */
     @GetMapping("/getMenu")
     @ApiOperation(value = "获取公众号菜单")
-    public R getMenu(@CookieValue String appid) throws Exception {
+    public R getMenu(@RequestHeader String appid) throws Exception {
         ChannelServiceApi api = wxAccountService.getApi(appid);
         IMResult<OutputGetChannelInfo> imResult = api.getChannelInfo();
         if (imResult != null && imResult.getErrorCode() == ErrorCode.ERROR_CODE_SUCCESS) {
@@ -62,7 +62,7 @@ public class WxMenuManageController {
     @PostMapping("/updateMenu")
     @RequiresPermissions("wx:menu:save")
     @ApiOperation(value = "创建、更新菜单")
-    public R updateMenu(@CookieValue String appid,@RequestBody WxMenu wxMenu) throws Exception {
+    public R updateMenu(@RequestHeader String appid,@RequestBody WxMenu wxMenu) throws Exception {
         ChannelServiceApi api = wxAccountService.getApi(appid);
 
         List<OutputGetChannelInfo.OutputMenu> menus = new ArrayList<>();

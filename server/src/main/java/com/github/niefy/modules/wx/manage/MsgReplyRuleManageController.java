@@ -35,7 +35,7 @@ public class MsgReplyRuleManageController {
     @GetMapping("/list")
     @RequiresPermissions("wx:msgreplyrule:list")
     @ApiOperation(value = "列表")
-    public R list(@CookieValue String appid,@RequestParam Map<String, Object> params) {
+    public R list(@RequestHeader String appid,@RequestParam Map<String, Object> params) {
         params.put("appid",appid);
         PageUtils page = msgReplyRuleService.queryPage(params);
 

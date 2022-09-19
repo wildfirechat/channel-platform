@@ -10,6 +10,7 @@ import com.github.niefy.modules.wx.service.MsgReplyService;
 import com.github.niefy.modules.wx.service.WxMsgService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.headers.Header;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class WxMsgManageController {
     @GetMapping("/list")
     @RequiresPermissions("wx:wxmsg:list")
     @ApiOperation(value = "列表")
-    public R list(@CookieValue String appid,@RequestParam Map<String, Object> params){
+    public R list(@RequestHeader String appid, @RequestParam Map<String, Object> params){
         params.put("appid",appid);
         PageUtils page = wxMsgService.queryPage(params);
 
@@ -67,7 +68,7 @@ public class WxMsgManageController {
     @GetMapping("/info/{id}")
     @RequiresPermissions("wx:wxmsg:info")
     @ApiOperation(value = "详情")
-    public R info(@CookieValue String appid,@PathVariable("id") Long id){
+    public R info(@RequestHeader String appid,@PathVariable("id") Long id){
 		WxMsg wxMsg = wxMsgService.getById(id);
 
         return R.ok().put("wxMsg", wxMsg);
@@ -79,7 +80,7 @@ public class WxMsgManageController {
     @PostMapping("/reply")
     @RequiresPermissions("wx:wxmsg:save")
     @ApiOperation(value = "回复")
-    public R reply(@CookieValue String appid,@RequestBody WxMsgReplyForm form){
+    public R reply(@RequestHeader String appid,@RequestBody WxMsgReplyForm form){
 
         msgReplyService.reply(appid, form.getOpenid(),form.getReplyType(),form.getReplyContent());
         return R.ok();
@@ -91,7 +92,7 @@ public class WxMsgManageController {
     @PostMapping("/delete")
     @RequiresPermissions("wx:wxmsg:delete")
     @ApiOperation(value = "删除")
-    public R delete(@CookieValue String appid,@RequestBody Long[] ids){
+    public R delete(@RequestHeader String appid,@RequestBody Long[] ids){
 		wxMsgService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
