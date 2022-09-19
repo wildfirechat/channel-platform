@@ -9,10 +9,10 @@
             <el-form-item>
                 <el-input v-model="dataForm.nickname" placeholder="昵称" clearable></el-input>
             </el-form-item>
-            <el-form-item>
+            <el-form-item v-if="false">
                 <el-input v-model="dataForm.city" placeholder="城市" clearable></el-input>
             </el-form-item>
-            <el-form-item>
+            <el-form-item v-if="false">
                 <el-input v-model="dataForm.qrSceneStr" placeholder="关注场景值" clearable></el-input>
             </el-form-item>
             <el-form-item>
@@ -29,13 +29,13 @@
         <el-table :data="dataList" border v-loading="dataListLoading" @selection-change="selectionChangeHandle" style="width: 100%;">
             <el-table-column type="selection" header-align="center" align="center" width="50">
             </el-table-column>
-            <el-table-column prop="openid" header-align="center" align="center" label="openid">
+            <el-table-column prop="openid" header-align="center" align="center" label="野火ID">
             </el-table-column>
             <el-table-column prop="nickname" header-align="center" align="center" label="昵称">
             </el-table-column>
             <el-table-column prop="sex" header-align="center" align="center" label="性别" :formatter="sexFormat">
             </el-table-column>
-            <el-table-column prop="city" header-align="center" align="center" label="城市">
+            <el-table-column v-if="false" prop="city" header-align="center" align="center" label="城市">
             </el-table-column>
             <el-table-column prop="headimgurl" header-align="center" align="center" label="头像">
                 <img class="headimg" slot-scope="scope" v-if="scope.row.headimgurl" :src="scope.row.headimgurl" />
@@ -48,7 +48,7 @@
             <el-table-column prop="subscribeTime" header-align="center" align="center" label="订阅时间">
                 <template slot-scope="scope">{{$moment(scope.row.subscribeTime).calendar()}}</template>
             </el-table-column>
-            <el-table-column prop="qrSceneStr" header-align="center" align="center" label="场景值">
+            <el-table-column v-if="false" prop="qrSceneStr" header-align="center" align="center" label="场景值">
             </el-table-column>
             <el-table-column prop="subscribe" header-align="center" align="center" label="是否关注">
                 <span slot-scope="scope">{{scope.row.subscribe?"是":"否"}}</span>
@@ -184,7 +184,7 @@ export default {
                     }
                 })
         },
-        
+
         sexFormat(row, column, cellValue) {
             let sexType = {
                 0: '未知',
