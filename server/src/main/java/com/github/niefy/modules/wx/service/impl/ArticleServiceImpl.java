@@ -115,7 +115,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         Article article = articleMapper.selectById(articleId);
         if (article != null) {
             ChannelServiceApi api = wxAccountService.getApi(appid);
-            ArticleContent content = new ArticleContent(articleId+"", article.getImage(), article.getTitle(), article.getTargetLink(), true);
+            ArticleContent content = new ArticleContent(articleId+"", article.getImage(), article.getTitle(), article.getSummary(), article.getTargetLink(), true);
             try {
                 api.sendMessage(0, null, content.toPayload());
                 return true;

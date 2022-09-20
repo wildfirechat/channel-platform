@@ -29,7 +29,7 @@
 		<swagger.version>3.0.0</swagger.version>
 		<fastjson.version>1.2.79</fastjson.version>
 		<lombok.version>1.18.22</lombok.version>
-		<wfc.sdk.version>0.91</wfc.sdk.version>
+		<wfc.sdk.version>0.95</wfc.sdk.version>
 	</properties>
 
 	<dependencies>
