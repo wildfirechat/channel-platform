@@ -54,25 +54,25 @@ java -jar channel-server-0.1.0.jar
 
 ## 截图
 菜单
-![menu](https://static.wildfirechat.cn/menu.png)
+![menu](http://static.wildfirechat.cn/menu.png)
 
 自动回复
-![auto reply](https://static.wildfirechat.cn/auto_reply.png)
+![auto reply](http://static.wildfirechat.cn/auto_reply.png)
 
 私聊
-![message](https://static.wildfirechat.cn/message.png)
+![message](http://static.wildfirechat.cn/message.png)
 
 粉丝管理
-![subscribers](https://static.wildfirechat.cn/subscribers.png)
+![subscribers](http://static.wildfirechat.cn/subscribers.png)
 
 文章管理
-![articles](https://static.wildfirechat.cn/articles.png)
+![articles](http://static.wildfirechat.cn/articles.png)
 
 频道账户
-![channel](https://static.wildfirechat.cn/channel_account.png)
+![channel](http://static.wildfirechat.cn/channel_account.png)
 
 系统管理
-![manage](https://static.wildfirechat.cn/manage.png)
+![manage](http://static.wildfirechat.cn/manage.png)
 
 ## 项目来源
 项目Base于[wx-api](https://github.com/niefy/wx-api)。
