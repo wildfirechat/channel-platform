@@ -12,7 +12,8 @@ server:
 debug: false
 
 spring:
-## 开发时使用h2db数据库，上线时需要切换到mysql。切换时把下面mysql相关的datasource打开，注释掉h2相关的datasource全部注释掉（包括password下面的几行）。切换到mysql需要手动创建数据库，然后执行resource目录下的sql语句。
+## 开发时使用h2db数据库，上线时需要切换到mysql。切换时把下面mysql相关的datasource打开，注释掉h2相关的datasource全部注释掉（包括password下面的几行）。
+## 切换到mysql需要手动创建数据库，然后执行resource目录下的sql语句。
 #    datasource:
 #        driver-class-name: com.mysql.cj.jdbc.Driver
 #        url: jdbc:mysql://${MYSQL_IP:localhost}:${MYSQL_PORT:3306}/wx?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
