@@ -3,19 +3,23 @@
     title="新增/修改"
     :close-on-click-modal="false"
     :visible.sync="visible">
-    <div class="padding text-gray">请先到野火开放平台创建频道，<a target="_blank" href="https://github.com/wildfirechat/open-platform">开发平台项目</a></div>
+    <div class="padding-bottom text-red">请先到管理后台或野火开放平台创建频道。
+        <a target="_blank" href="https://github.com/wildfirechat/open-platform">开放平台项目</a>
+        &nbsp;、&nbsp;
+        <a target="_blank" href="https://docs.wildfirechat.cn/admin">管理后台</a>
+    </div>
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="100px">
       <el-form-item label="频道名称" prop="name">
       <el-input v-model="dataForm.name" placeholder="频道名称"></el-input>
     </el-form-item>
     <el-form-item label="imurl" prop="imurl">
-      <el-input v-model="dataForm.imurl" placeholder="IM服务地址(频道使用的是80端口，不是18080端口)"></el-input>
+      <el-input v-model="dataForm.imurl" placeholder="IM服务地址（频道使用的是80端口，不是18080端口）"></el-input>
     </el-form-item>
-    <el-form-item label="appid" prop="appid">
-      <el-input v-model="dataForm.appid" placeholder="appid" maxlength="36"></el-input>
+    <el-form-item label="appId" prop="appid">
+      <el-input v-model="dataForm.appid" placeholder="appId（请先通过管理后台，或者开放平台先创建频道）" maxlength="36"></el-input>
     </el-form-item>
-    <el-form-item label="appsecret" prop="secret">
-      <el-input v-model="dataForm.secret" placeholder="appsecret" maxlength="36"></el-input>
+    <el-form-item label="appSecret" prop="secret">
+      <el-input v-model="dataForm.secret" placeholder="appSecret（请先通过管理后台，或者开放平台先创建频道）" maxlength="36"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
