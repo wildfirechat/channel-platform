@@ -5,7 +5,8 @@
 野火频道系统包括3部分。[server](./server)为野火频道服务的后端服务，给管理后台页面和客户端页面提供服务；[manage](./manage)为野火频道管理页面，管理员可以登录并管理频道；[client](./client)为客户端页面，在用户手机展示文章内容。
 
 ## 依赖
-依赖Java1.8
+Java 1.8
+node v14.18.1
 
 ## 编译manage
 编译机器上按照nodejs，进入到[manage](./manage)目录，执行下述命令
