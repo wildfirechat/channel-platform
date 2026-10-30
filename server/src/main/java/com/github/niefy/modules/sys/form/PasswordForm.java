@@ -1,5 +1,6 @@
 package com.github.niefy.modules.sys.form;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 /**
@@ -11,10 +12,12 @@ public class PasswordForm {
     /**
      * 原密码
      */
+    @JSONField(serialize = false)
     private String password;
     /**
      * 新密码
      */
+    @JSONField(serialize = false)
     private String newPassword;
 
 }

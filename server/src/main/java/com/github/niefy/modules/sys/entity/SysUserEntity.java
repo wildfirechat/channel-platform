@@ -1,6 +1,8 @@
 package com.github.niefy.modules.sys.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.niefy.common.validator.group.AddGroup;
@@ -43,6 +45,8 @@ public class SysUserEntity implements Serializable {
     /**
      * 盐
      */
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JSONField(serialize = false)
     private String salt;
 
     /**

@@ -126,6 +126,34 @@ public class SysUserController extends AbstractController {
     @ApiOperation(value = "删除用户",notes = "")
     public R update(@RequestBody SysUserEntity user) {
         ValidatorUtils.validateEntity(user, UpdateGroup.class);
+        if (user.getUserId() == null) {
+            return R.error("用户ID不能为空");
+        }
+
+        Long currentUserId = getUserId();
+        SysUserEntity target = sysUserService.getById(user.getUserId());
+        if (target == null) {
+            return R.error("用户不存在");
+        }
+
+        // 只有超级管理员能修改超级管理员；普通管理员只能修改自己创建的用户
+        if (Constant.SUPER_ADMIN == target.getUserId().intValue() && currentUserId != Constant.SUPER_ADMIN) {
+            return R.error("无权修改超级管理员");
+        }
+        if (currentUserId != Constant.SUPER_ADMIN
+                && (target.getCreateUserId() == null || !currentUserId.equals(target.getCreateUserId()))) {
+            return R.error("无权修改该用户");
+        }
+
+        // 通用编辑接口不允许改密码/盐/角色：密码走 /sys/user/password 或超管重置，
+        // 否则有 sys:user:update 权限的人可以改掉别人的密码（包括超管）后登录。
+        if (currentUserId != Constant.SUPER_ADMIN) {
+            user.setPassword(null);
+            user.setSalt(null);
+            if (user.getRoleIdList() == null) {
+                user.setRoleIdList(sysUserRoleService.queryRoleIdList(user.getUserId()));
+            }
+        }
 
         user.setCreateUserId(getUserId());
         sysUserService.update(user);

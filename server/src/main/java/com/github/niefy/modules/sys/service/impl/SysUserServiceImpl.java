@@ -83,8 +83,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
     public void update(SysUserEntity user) {
         if (StringUtils.isBlank(user.getPassword())) {
             user.setPassword(null);
+            user.setSalt(null);
         } else {
-            user.setPassword(new Sha256Hash(user.getPassword(), user.getSalt()).toHex());
+            // 盐必须用库里已有的值，不能信任请求里传入的 salt（否则可构造弱哈希/固定盐）
+            SysUserEntity existing = this.getById(user.getUserId());
+            String salt = existing != null && StringUtils.isNotBlank(existing.getSalt())
+                    ? existing.getSalt() : RandomStringUtils.randomAlphanumeric(20);
+            user.setSalt(salt);
+            user.setPassword(new Sha256Hash(user.getPassword(), salt).toHex());
         }
         this.updateById(user);
 

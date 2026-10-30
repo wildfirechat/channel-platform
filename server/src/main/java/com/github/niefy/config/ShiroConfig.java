@@ -44,6 +44,8 @@ public class ShiroConfig {
         filterMap.put("/sys/login", "anon");
         filterMap.put("/sys/**", "oauth2");
         filterMap.put("/manage/**", "oauth2");
+        // 粉丝信息包含手机号、unionid 等 PII，必须登录后台才能查
+        filterMap.put("/wxUser/**", "oauth2");
         filterMap.put("/wx/**", "anon");
         filterMap.put("/client/**", "anon");
         filterMap.put("/**", "anon");
